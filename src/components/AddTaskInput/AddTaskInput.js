@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddTaskInput = () => {
+function AddTaskInput() {
   return (
     <div className={'align-self-start'} style={ divStyles }>
       <input id="newCompanyNameInput" type="text" style={ inputStyles } placeholder="Track new sale.." autoFocus></input>

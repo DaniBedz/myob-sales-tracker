@@ -4,14 +4,14 @@ import TaskList from './components/TaskList';
 
 function App() {
   return (
-    <div style={app}>
+    <div style={ appStyles }>
       <Header />
       <TaskList />
     </div>
   );
 }
 
-const app = {
+const appStyles = {
   backgroundColor: '#565656',
 }
 

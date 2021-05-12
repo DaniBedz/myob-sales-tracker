@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.png';
 import AddTaskInput from '../AddTaskInput/AddTaskInput';
+import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
 
-const Header = () => {
+function Header() {
   return (
     <div style={ containerStyle }>
       <div className="row">
@@ -13,12 +14,17 @@ const Header = () => {
           <AddTaskInput />
         </div>
       </div>
+      <ColumnHeaders />
     </div>
   );
 };
 
 const containerStyle = {
-  width: '100%',
+  borderTop: '2px solid gray',
+  borderRight: '2px solid grey',
+  borderBottom: '3px solid #343a40',
+  borderLeft: '3px solid #343a40',
+  borderRadius: '3px',
 }
 
 const logoStyle = {
