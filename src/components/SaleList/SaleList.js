@@ -1,17 +1,11 @@
 import React from 'react';
 import Sale from '../Sale/Sale';
-import Utilisations from '../Utilisations/Utilisations';
 
 function SaleList() {
   return (
-    <>
-      <div style={ divStyle }>
-        { salesArray.map(sale => <Sale saleInfo={ sale } key={ sale.saleId}/>)}
-      </div>
-      <div style={ divStyle }>
-        { salesArray.map(sale => <Utilisations saleInfo={ sale } key={ sale.saleId}/>)}
-      </div>
-    </>
+    <div style={ divStyle }>
+      { salesArray.map(sale => <Sale saleInfo={ sale } key={ sale.saleId}/>)}
+    </div>
   );
 };
 
@@ -32,13 +26,13 @@ const salesArray = [
   potentialSales: '1',
   utilisations:
     {
-      subs: 0,
-      bankFeed: 0,
-      cloudFile: 0,
+      subs: 3,
+      bankFeed: 2,
+      cloudFile: 1,
       PDO: 0,
-      OAQ: 0,
-      STP: 0,
-      offlineFile: 0,
+      OAQ: 4,
+      STP: 2,
+      offlineFile: 1,
     },
   },
   {
@@ -53,13 +47,13 @@ const salesArray = [
   potentialSales: '1',
   utilisations:
     {
-      subs: 0,
-      bankFeed: 0,
-      cloudFile: 0,
-      PDO: 0,
-      OAQ: 0,
-      STP: 0,
-      offlineFile: 0,
+      subs: 5,
+      bankFeed: 1,
+      cloudFile: 2,
+      PDO: 1,
+      OAQ: 2,
+      STP: 4,
+      offlineFile: 1,
     },
   },
 ];

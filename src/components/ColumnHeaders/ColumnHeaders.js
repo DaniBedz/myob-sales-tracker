@@ -3,6 +3,7 @@ import React from 'react';
 function ColumnHeaders() {
   return (
     <div className="row" style={ rowStyles }>
+      <div className="col" style={ columnStyles }>Type</div>
       <div className="col" style={ columnStyles }>Company</div>
       <div className="col" style={ columnStyles }>Quote ID</div>
       <div className="col" style={ columnStyles }>Email</div>
@@ -11,7 +12,7 @@ function ColumnHeaders() {
       <div className="col" style={ columnStyles }>Status</div>
       <div className="col" style={ columnStyles }>Sale Date</div>
       <div className="col" style={ columnStyles }>Potential Sales</div>
-      <div className="col" style={ columnStyles }>Utilisations</div>
+      <div className="col" style={ columnStyles }>Delete</div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Utilisations from '../Utilisations/Utilisations';
 
 function Sale(props) {
   const [company, setCompany] = useState(props.saleInfo.company);
@@ -11,37 +12,42 @@ function Sale(props) {
   const [potentialSales, setPotentialSales] = useState(props.saleInfo.potentialSales);
   const [utilisations, setUtilisations] = useState(props.saleInfo.utilisations);
 
-
   return (
-    <div style={ divStyles } className='row'>
-      <div className='col'>
-        <input id={`companyInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Company name" onChange={ handleChange } value={company}></input>
+    <>
+      <div style={ divStyles } className='row'>
+        <div className='col'>
+          <input id={`TypeInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Type" onChange={ handleChange } value={''}></input>
+        </div>
+        <div className='col'>
+          <input id={`companyInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Company name" onChange={ handleChange } value={company}></input>
+        </div>
+        <div className='col'>
+          <input id={`quoteIdInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Quote ID" onChange={ handleChange } value={ quoteId }></input>
+        </div>
+        <div className='col'>
+          <input id={`emailInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Email" onChange={ handleChange } value={ email }></input>
+        </div>
+        <div className='col'>
+          <input id={`phoneInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Phone Number" onChange={ handleChange } value={ phone }></input>
+        </div>
+        <div className='col'>
+          <input id={`quoteExpiryInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Quote Expiry Date" onChange={ handleChange } value={ quoteExpiry }></input>
+        </div>
+        <div className='col'>
+          <input id={`statusInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Status" onChange={ handleChange } value={ status }></input>
+        </div>
+        <div className='col'>
+          <input id={`saleDate${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Sale Date" onChange={ handleChange } value={ saleDate }></input>
+        </div>
+        <div className='col'>
+          <input id={`poentialSales${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Potential Sales" onChange={ handleChange } value={ potentialSales }></input>
+        </div>
+        <div className='col' style={ utilisationStyles }>
+          <span>'🗑' </span>
+        </div>
+      <Utilisations saleInfo={ props.saleInfo.utilisations }/>
       </div>
-      <div className='col'>
-        <input id={`quoteIdInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Quote ID" onChange={ handleChange } value={ quoteId }></input>
-      </div>
-      <div className='col'>
-        <input id={`emailInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Email" onChange={ handleChange } value={ email }></input>
-      </div>
-      <div className='col'>
-        <input id={`phoneInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Phone Number" onChange={ handleChange } value={ phone }></input>
-      </div>
-      <div className='col'>
-        <input id={`quoteExpiryInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Quote Expiry Date" onChange={ handleChange } value={ quoteExpiry }></input>
-      </div>
-      <div className='col'>
-        <input id={`statusInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Status" onChange={ handleChange } value={ status }></input>
-      </div>
-      <div className='col'>
-        <input id={`saleDate${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Sale Date" onChange={ handleChange } value={ saleDate }></input>
-      </div>
-      <div className='col'>
-        <input id={`poentialSales${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Potential Sales" onChange={ handleChange } value={ potentialSales }></input>
-      </div>
-      <div className='col' style={ utilisationStyles }>
-        <span>'🔧' </span>
-      </div>
-    </div>
+    </>
   );
 
   function handleChange(e) {
