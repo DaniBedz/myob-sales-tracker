@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.png';
-import AddTaskInput from '../AddTaskInput/AddTaskInput';
+import AddSaleInput from '../AddSaleInput/AddSaleInput';
 import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
 
 function Header() {
@@ -11,7 +11,7 @@ function Header() {
           <img src={logo} alt="logo" style={ logoStyle }></img>
         </div>
         <div className="col-4 d-flex justify-content-end align-items-start">
-          <AddTaskInput />
+          <AddSaleInput />
         </div>
       </div>
       <ColumnHeaders />

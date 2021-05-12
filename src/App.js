@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './components/Header/Header';
-import TaskList from './components/TaskList';
+import SaleList from './components/SaleList/SaleList';
 
 function App() {
   return (
     <div style={ appStyles }>
       <Header />
-      <TaskList />
+      <SaleList />
     </div>
   );
 }

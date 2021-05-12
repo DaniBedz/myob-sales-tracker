@@ -1,12 +1,17 @@
 import React from 'react';
-import Task from './Task';
-// import ColumnHeaders from './ColumnHeaders/ColumnHeaders';
+import Sale from '../Sale/Sale';
+import Utilisations from '../Utilisations/Utilisations';
 
-function TaskList() {
+function SaleList() {
   return (
-    <div style={ divStyle }>
-      { tasksArray.map(task => <Task taskInfo={ task } key={ task.taskId}/>)}
-    </div>
+    <>
+      <div style={ divStyle }>
+        { salesArray.map(sale => <Sale saleInfo={ sale } key={ sale.saleId}/>)}
+      </div>
+      <div style={ divStyle }>
+        { salesArray.map(sale => <Utilisations saleInfo={ sale } key={ sale.saleId}/>)}
+      </div>
+    </>
   );
 };
 
@@ -14,9 +19,9 @@ const divStyle = {
   margin: '0rem 0.25rem',
 }
 
-const tasksArray = [
+const salesArray = [
   {
-  taskId: '1',
+  saleId: '1',
   company: 'Corp Tech',
   quoteId: '3123423',
   email: 'info@corp.tech',
@@ -37,7 +42,7 @@ const tasksArray = [
     },
   },
   {
-  taskId: '2',
+  saleId: '2',
   company: 'Jims Mowing',
   quoteId: '2342525',
   email: 'info@jimsmowing.com',
@@ -59,4 +64,4 @@ const tasksArray = [
   },
 ];
 
-export default TaskList;
+export default SaleList;
