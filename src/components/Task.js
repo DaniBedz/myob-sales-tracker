@@ -9,7 +9,7 @@ function Task(props) {
   const [status, setStatus] = useState(props.taskInfo.status);
   const [saleDate, setSaleDate] = useState(props.taskInfo.saleDate);
   const [potentialSales, setPotentialSales] = useState(props.taskInfo.potentialSales);
-  // const [utilisations, setUtilisations] = useState(props.taskInfo.utilisations);
+  const [utilisations, setUtilisations] = useState(props.taskInfo.utilisations);
 
 
   return (
@@ -38,6 +38,9 @@ function Task(props) {
       <div className='col'>
         <input id={`poentialSales${props.taskInfo.taskId}`} style={ inputStyles } type="text" placeholder="Potential Sales" onChange={ handleChange } value={ potentialSales }></input>
       </div>
+      <div className='col' style={ utilisationStyles }>
+        <span>'🔧' </span>
+      </div>
     </div>
   );
 
@@ -50,6 +53,7 @@ function Task(props) {
     if (e.target.id.includes('status')) setStatus(e.target.value);
     if (e.target.id.includes('saleDate')) setSaleDate(e.target.value);
     if (e.target.id.includes('potentialSales')) setPotentialSales(e.target.value);
+    if (e.target.id.includes('utilisations')) setUtilisations(e.target.value);
   }
 };
 
@@ -73,6 +77,12 @@ const inputStyles = {
   borderRadius: '7px',
   width: '100%',
   textAlign: 'center',
+}
+
+const utilisationStyles = {
+  width: '100%',
+  textAlign: 'center',
+  color: '#565656',
 }
 
 export default Task;

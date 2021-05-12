@@ -11,6 +11,7 @@ function ColumnHeaders() {
       <div className="col" style={ columnStyles }>Status</div>
       <div className="col" style={ columnStyles }>Sale Date</div>
       <div className="col" style={ columnStyles }>Potential Sales</div>
+      <div className="col" style={ columnStyles }>Utilisations</div>
     </div>
   );
 };
