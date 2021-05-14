@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import { SalesListContext } from '../SaleList/SalesListContext';
 import Utilisations from '../Utilisations/Utilisations';
 
@@ -113,9 +114,7 @@ function Sale({sale}) {
             value={potentialSales}
           />
         </div>
-        <div className="col" style={utilisationStyles}>
-          <span>'🗑' </span>
-        </div>
+        <DeleteIcon saleId={sale.saleId}/>
         <Utilisations sale={ sale } />
       </div>
     </>
@@ -141,12 +140,6 @@ const inputStyles = {
   borderRadius: '7px',
   width: '100%',
   textAlign: 'center',
-};
-
-const utilisationStyles = {
-  width: '100%',
-  textAlign: 'center',
-  color: '#565656',
 };
 
 export default Sale;

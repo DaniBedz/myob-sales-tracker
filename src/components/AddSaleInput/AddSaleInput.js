@@ -54,7 +54,7 @@ const plusButtonStyles = {
   border: '2px solid #343a40',
   background: 'linear-gradient(90deg, #6c00ac, #ff0077)',
   borderRadius: '7px',
-  color: 'black',
+  color: 'white',
   marginLeft: '3px',
   height: '2.8rem',
   paddingLeft: '1.1rem',

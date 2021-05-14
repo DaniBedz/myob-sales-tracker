@@ -13,7 +13,7 @@ function Stepper({utilisation, sale, type}) {
   }
 
   function decrement() {
-    if (utilisation === 0) return;
+    if (number === 0) return;
     setNumber(prevNumber => prevNumber -= 1);
     sale.utilisations[type]--;
     saveToLocalStorage();

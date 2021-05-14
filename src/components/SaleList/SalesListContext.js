@@ -1,5 +1,11 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { v4 as uuid} from 'uuid';
+import * as alertify from 'alertifyjs';
+import defaults from './alertifyDefaults';
+import 'alertifyjs/build/css/alertify.css';
+import './alertifyCustom.css';
+
+alertify.defaults = defaults;
 
 export const SalesListContext = createContext();
 
@@ -43,8 +49,18 @@ export function SalesListContextProvider(props) {
     saveToLocalStorage();
     }, [sales, saveToLocalStorage]);
 
+    function deleteSale(saleId) {
+    alertify.confirm('Delete Sale', 'Are you sure?', function() {
+      setSales(sales.filter(sale => sale.saleId !== saleId));
+      saveToLocalStorage();
+      alertify.success('Deleted');
+    }, function() {
+      alertify.error('Cancelled')
+    });
+  };
+
   return (
-          <SalesListContext.Provider value={{sales, setSales, addSale, saveToLocalStorage }}>
+          <SalesListContext.Provider value={{sales, setSales, addSale, saveToLocalStorage, deleteSale, alertify }}>
             { props.children }
           </SalesListContext.Provider>
           );

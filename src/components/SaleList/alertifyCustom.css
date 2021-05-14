@@ -1,0 +1,114 @@
+.ajs-message {
+  border: 2px solid #343a40;
+  border-radius: 10px;
+  width: 350px;
+  right: 350px;
+  color: white;
+}
+
+.alertify-notifier .ajs-message {
+    color: white;
+    text-align: center;
+}
+
+.alertify .ajs-dialog,
+.ajs-header,
+.ajs-footer {
+  background-color: #565656;
+}
+
+.ajs-input {
+  border: 3px solid #343a40;
+  background: #565656;
+  border-radius: 10px;
+  color: white;
+}
+
+.ajs-button {
+  color: #343a40;
+}
+
+.ajs-content {
+  color: white;
+}
+
+.alertify .ajs-header {
+  border-top: 3px solid #343a40;
+  border-left: 3px solid #343a40;
+  border-right: 3px solid #343a40;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0;
+  background-color: #565656;
+  color: white;
+}
+
+.alertify .ajs-footer {
+  border-top: none;
+  border-left: 3px solid #343a40;
+  border-right: 3px solid #343a40;
+  border-bottom: 3px solid #343a40;
+  border-radius: 0 0 10px 10px;
+  background-color: #565656;
+}
+
+.ajs-ok {
+  color: rgba(91, 189, 114);
+  background-color: #565656;
+  border: 2px solid #343a40;
+  border-radius: 10px;
+  margin-right: 2.3rem;
+}
+
+.alertify .ajs-commands button {
+  border: 1px solid #343a40;
+  border-radius: 3px;
+
+}
+
+.ajs-ok:hover {
+  background-color: #343a40;
+}
+
+.ajs-cancel {
+  color: rgb(255, 105, 105);
+  background-color: #565656;
+  border: 2px solid #343a40;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ajs-cancel:hover {
+  background-color: #343a40;
+}
+
+.alertify-notifier .ajs-message {
+  text-shadow: none;
+}
+
+.alertify-notifier * {
+  color: #343a40;
+}
+
+.alertify .ajs-dialog {
+  border-left: 3px solid #343a40;
+  border-right: 3px solid #343a40;
+  border-radius: 10px;
+  padding: 21px 21px 0px 21px;
+}
+
+.alertify-notifier.ajs-bottom {
+  bottom: 5vh;
+}
+
+.ajs-commands button {
+  width: 30px;
+  height: 30px;
+  background-color: #343a40;
+  border-radius: 3px;
+  margin-right: -0.8rem;
+}
+
+.alertify .ajs-modal {
+  top: 20%;
+}
