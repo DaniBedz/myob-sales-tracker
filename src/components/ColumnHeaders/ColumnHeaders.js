@@ -7,7 +7,7 @@ function ColumnHeaders() {
       <div className="col" style={ columnStyles }>Company</div>
       <div className="col" style={ columnStyles }>Quote ID</div>
       <div className="col" style={ columnStyles }>Email</div>
-      <div className="col" style={ columnStyles }>Phone</div>
+      <div className="col" style={ columnStyles }>Client ID</div>
       <div className="col" style={ columnStyles }>Quote Expiry</div>
       <div className="col" style={ columnStyles }>Status</div>
       <div className="col" style={ columnStyles }>Sale Date</div>

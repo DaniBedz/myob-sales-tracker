@@ -20,7 +20,7 @@ export function SalesListContextProvider(props) {
       company,
       quoteId: '',
       email: '',
-      phone: '',
+      clientId: '',
       quoteExpiry: '',
       status: '',
       saleDate: '',

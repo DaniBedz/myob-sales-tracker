@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import { SalesListContext } from '../SaleList/SalesListContext';
 import Utilisations from '../Utilisations/Utilisations';
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/themes/material_green.css";
 
 function Sale({sale}) {
   const { saveToLocalStorage } = useContext(SalesListContext);
@@ -9,7 +11,7 @@ function Sale({sale}) {
   const [type, setType] = useState(sale.type);
   const [quoteId, setQuoteId] = useState(sale.quoteId);
   const [email, setEmail] = useState(sale.email);
-  const [phone, setPhone] = useState(sale.phone);
+  const [clientId, setClientId] = useState(sale.clientId);
   const [quoteExpiry, setQuoteExpiry] = useState(sale.quoteExpiry);
   const [status, setStatus] = useState(sale.status);
   const [saleDate, setSaleDate] = useState(sale.saleDate);
@@ -66,23 +68,22 @@ function Sale({sale}) {
         </div>
         <div className="col">
           <input
-            id={`phoneInput${sale.saleId}`}
+            id={`clientIdInput${sale.saleId}`}
             style={inputStyles}
             type="text"
-            placeholder="Phone Number"
-            onChange={(event) => handleChange(event.target.value,'phone', setPhone)}
-            value={phone}
+            placeholder="Client ID"
+            onChange={(event) => handleChange(event.target.value,'clientId', setClientId)}
+            value={clientId}
           />
         </div>
         <div className="col">
-          <input
-            id={`quoteExpiryInput${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Quote Expiry Date"
-            onChange={(event) => handleChange(event.target.value,'quoteExpiry', setQuoteExpiry)}
-            value={quoteExpiry}
-          />
+          <Flatpickr
+            data-enable-time
+            value={ sale.quoteExpiry }
+            onChange={date => {
+            setQuoteExpiry({ date });
+            sale.quoteExpiry = date;
+          }}/>
         </div>
         <div className="col">
           <input
