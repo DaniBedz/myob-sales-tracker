@@ -1,36 +1,36 @@
 import React from 'react';
 import Stepper from '../Stepper/Stepper';
 
-function Utilisations(props) {
+function Utilisations({sale}) {
   return (
     <div className='row' style={ divStyle }>
       <div className='col' style={ colStyle }>
         <span>Subs</span>
-        <Stepper value={props.saleInfo.subs} />
+        <Stepper sale={sale} type='subs' utilisation={sale.utilisations.subs} />
       </div>
-      <div className='col' style={ colStyle }>
+        <div className='col' style={ colStyle }>
         <span>Bank Feeds</span>
-        <Stepper value={ props.saleInfo.bankFeed } />
+        <Stepper sale={sale} type='bankFeed' utilisation={ sale.utilisations.bankFeed } />
       </div>
-      <div className='col' style={ colStyle }>
+        <div className='col' style={ colStyle }>
         <span>Cloud File</span>
-        <Stepper value={ props.saleInfo.cloudFile } />
+        <Stepper sale={sale} type='cloudFile' utilisation={ sale.utilisations.cloudFile } />
       </div>
-      <div className='col' style={ colStyle }>
+        <div className='col' style={ colStyle }>
         <span>PDO</span>
-        <Stepper value={ props.saleInfo.PDO } />
+        <Stepper sale={sale} type='PDO' utilisation={ sale.utilisations.PDO } />
       </div>
-      <div className='col' style={ colStyle }>
+        <div className='col' style={ colStyle }>
         <span>OAQ</span>
-        <Stepper value={ props.saleInfo.OAQ } />
+        <Stepper sale={sale} type='OAQ' utilisation={ sale.utilisations.OAQ } />
       </div>
-      <div className='col' style={ colStyle }>
+        <div className='col' style={ colStyle }>
         <span>STP</span>
-        <Stepper value={ props.saleInfo.STP } />
+        <Stepper sale={sale} type='STP' utilisation={ sale.utilisations.STP } />
       </div>
-      <div className='col' style={ colStyle }>
+        <div className='col' style={ colStyle }>
         <span>Offline File</span>
-        <Stepper value={ props.saleInfo.offlineFile } />
+        <Stepper sale={sale} type='offlineFile' utilisation={ sale.utilisations.offlineFile } />
       </div>
     </div>
   );

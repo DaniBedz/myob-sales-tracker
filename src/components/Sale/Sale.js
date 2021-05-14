@@ -1,68 +1,126 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { SalesListContext } from '../SaleList/SalesListContext';
 import Utilisations from '../Utilisations/Utilisations';
 
-function Sale(props) {
-  const [company, setCompany] = useState(props.saleInfo.company);
-  const [quoteId, setQuoteId] = useState(props.saleInfo.quoteId);
-  const [email, setEmail] = useState(props.saleInfo.email);
-  const [phone, setPhone] = useState(props.saleInfo.phone);
-  const [quoteExpiry, setQuoteExpiry] = useState(props.saleInfo.quoteExpiry);
-  const [status, setStatus] = useState(props.saleInfo.status);
-  const [saleDate, setSaleDate] = useState(props.saleInfo.saleDate);
-  const [potentialSales, setPotentialSales] = useState(props.saleInfo.potentialSales);
-  const [utilisations, setUtilisations] = useState(props.saleInfo.utilisations);
+function Sale({sale}) {
+  const { saveToLocalStorage } = useContext(SalesListContext);
+  const [company, setCompany] = useState(sale.company);
+  const [type, setType] = useState(sale.type);
+  const [quoteId, setQuoteId] = useState(sale.quoteId);
+  const [email, setEmail] = useState(sale.email);
+  const [phone, setPhone] = useState(sale.phone);
+  const [quoteExpiry, setQuoteExpiry] = useState(sale.quoteExpiry);
+  const [status, setStatus] = useState(sale.status);
+  const [saleDate, setSaleDate] = useState(sale.saleDate);
+  const [potentialSales, setPotentialSales] = useState(sale.potentialSales);
+
+  function handleChange(value, field, setField) {
+    setField(value);
+    sale[field] = value;
+    saveToLocalStorage();
+  }
 
   return (
     <>
-      <div style={ divStyles } className='row'>
-        <div className='col'>
-          <input id={`TypeInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Type" onChange={ handleChange } value={''}></input>
+      <div style={divStyles} className="row">
+        <div className="col">
+          <input
+            id={`typeInput_${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Type"
+            onChange={(event) => handleChange(event.target.value,'type', setType)}
+            value={ type }
+          />
         </div>
-        <div className='col'>
-          <input id={`companyInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Company name" onChange={ handleChange } value={company}></input>
+        <div className="col">
+          <input
+            id={`companyInput_${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Company name"
+            onChange={(event) => handleChange(event.target.value,'company', setCompany)}
+            value={ company }
+          />
         </div>
-        <div className='col'>
-          <input id={`quoteIdInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Quote ID" onChange={ handleChange } value={ quoteId }></input>
+        <div className="col">
+          <input
+            id={`quoteIdInput${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Quote ID"
+            onChange={(event) => handleChange(event.target.value,'quoteId', setQuoteId)}
+            value={ quoteId }
+          />
         </div>
-        <div className='col'>
-          <input id={`emailInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Email" onChange={ handleChange } value={ email }></input>
+        <div className="col">
+          <input
+            id={`emailInput${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Email"
+            onChange={(event) => handleChange(event.target.value,'email', setEmail)}
+            value={email}
+          />
         </div>
-        <div className='col'>
-          <input id={`phoneInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Phone Number" onChange={ handleChange } value={ phone }></input>
+        <div className="col">
+          <input
+            id={`phoneInput${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Phone Number"
+            onChange={(event) => handleChange(event.target.value,'phone', setPhone)}
+            value={phone}
+          />
         </div>
-        <div className='col'>
-          <input id={`quoteExpiryInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Quote Expiry Date" onChange={ handleChange } value={ quoteExpiry }></input>
+        <div className="col">
+          <input
+            id={`quoteExpiryInput${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Quote Expiry Date"
+            onChange={(event) => handleChange(event.target.value,'quoteExpiry', setQuoteExpiry)}
+            value={quoteExpiry}
+          />
         </div>
-        <div className='col'>
-          <input id={`statusInput${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Status" onChange={ handleChange } value={ status }></input>
+        <div className="col">
+          <input
+            id={`statusInput${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Status"
+            onChange={(event) => handleChange(event.target.value,'status', setStatus)}
+            value={status}
+          />
         </div>
-        <div className='col'>
-          <input id={`saleDate${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Sale Date" onChange={ handleChange } value={ saleDate }></input>
+        <div className="col">
+          <input
+            id={`saleDate${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Sale Date"
+            onChange={(event) => handleChange(event.target.value,'saleDate', setSaleDate)}
+            value={saleDate}
+          />
         </div>
-        <div className='col'>
-          <input id={`poentialSales${props.saleInfo.taskId}`} style={ inputStyles } type="text" placeholder="Potential Sales" onChange={ handleChange } value={ potentialSales }></input>
+        <div className="col">
+          <input
+            id={`poentialSales${sale.saleId}`}
+            style={inputStyles}
+            type="text"
+            placeholder="Potential Sales"
+            onChange={(event) => handleChange(event.target.value,'potentialSales', setPotentialSales)}
+            value={potentialSales}
+          />
         </div>
-        <div className='col' style={ utilisationStyles }>
+        <div className="col" style={utilisationStyles}>
           <span>'🗑' </span>
         </div>
-      <Utilisations saleInfo={ props.saleInfo.utilisations }/>
+        <Utilisations sale={ sale } />
       </div>
     </>
   );
-
-  function handleChange(e) {
-    if (e.target.id.includes('company')) setCompany(e.target.value);
-    if (e.target.id.includes('quoteId')) setQuoteId(e.target.value);
-    if (e.target.id.includes('email')) setEmail(e.target.value);
-    if (e.target.id.includes('phone')) setPhone(e.target.value);
-    if (e.target.id.includes('quoteExpiry')) setQuoteExpiry(e.target.value);
-    if (e.target.id.includes('status')) setStatus(e.target.value);
-    if (e.target.id.includes('saleDate')) setSaleDate(e.target.value);
-    if (e.target.id.includes('potentialSales')) setPotentialSales(e.target.value);
-    if (e.target.id.includes('utilisations')) setUtilisations(e.target.value);
-  }
-};
-
+}
 
 const divStyles = {
   backgroundColor: '#565656',
@@ -74,7 +132,7 @@ const divStyles = {
   borderBottom: '3px solid #343a40',
   borderLeft: '3px solid #343a40',
   borderRadius: '3px',
-}
+};
 
 const inputStyles = {
   backgroundColor: '#484848',
@@ -83,12 +141,12 @@ const inputStyles = {
   borderRadius: '7px',
   width: '100%',
   textAlign: 'center',
-}
+};
 
 const utilisationStyles = {
   width: '100%',
   textAlign: 'center',
   color: '#565656',
-}
+};
 
 export default Sale;
