@@ -22,7 +22,7 @@ function AddSaleInput() {
         onChange={handleChange}
         type="text"
         style={inputStyles}
-        placeholder="Track new sale.."
+        placeholder="Add new sale.."
         value={newSaleText}
         autoFocus
         required
@@ -68,6 +68,7 @@ const divStyles = {
   margin: '1rem',
   width: '100%',
   display: 'flex',
+  zIndex: '1',
 };
 
 export default AddSaleInput;

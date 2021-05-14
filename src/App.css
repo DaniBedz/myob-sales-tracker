@@ -7,7 +7,11 @@ html, body {
   overflow-x: hidden;
 }
 
-
 .row {
   --bs-gutter-x: 0.5rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }

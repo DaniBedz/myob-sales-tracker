@@ -3,7 +3,7 @@ import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import { SalesListContext } from '../SaleList/SalesListContext';
 import Utilisations from '../Utilisations/Utilisations';
 import Flatpickr from "react-flatpickr";
-import "flatpickr/dist/themes/material_green.css";
+import "./flatpickr.css";
 
 function Sale({sale}) {
   const { saveToLocalStorage } = useContext(SalesListContext);
@@ -26,7 +26,7 @@ function Sale({sale}) {
   return (
     <>
       <div style={divStyles} className="row">
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`typeInput_${sale.saleId}`}
             style={inputStyles}
@@ -36,7 +36,7 @@ function Sale({sale}) {
             value={ type }
           />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`companyInput_${sale.saleId}`}
             style={inputStyles}
@@ -46,17 +46,18 @@ function Sale({sale}) {
             value={ company }
           />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`quoteIdInput${sale.saleId}`}
             style={inputStyles}
             type="text"
             placeholder="Quote ID"
+            className="no-outline"
             onChange={(event) => handleChange(event.target.value,'quoteId', setQuoteId)}
             value={ quoteId }
           />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`emailInput${sale.saleId}`}
             style={inputStyles}
@@ -66,7 +67,7 @@ function Sale({sale}) {
             value={email}
           />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`clientIdInput${sale.saleId}`}
             style={inputStyles}
@@ -76,16 +77,19 @@ function Sale({sale}) {
             value={clientId}
           />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <Flatpickr
-            data-enable-time
-            value={ sale.quoteExpiry }
+            options={ flatPickrOptions }
+            style={inputStyles}
+            value={ quoteExpiry }
             onChange={date => {
-            setQuoteExpiry({ date });
-            sale.quoteExpiry = date;
-          }}/>
+              setQuoteExpiry(date);
+              sale['quoteExpiry'] = date;
+              saveToLocalStorage();
+            }}
+          />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`statusInput${sale.saleId}`}
             style={inputStyles}
@@ -95,17 +99,19 @@ function Sale({sale}) {
             value={status}
           />
         </div>
-        <div className="col">
-          <input
-            id={`saleDate${sale.saleId}`}
+        <div className="col" style={ colStyles }>
+          <Flatpickr
+            options={ flatPickrOptions }
             style={inputStyles}
-            type="text"
-            placeholder="Sale Date"
-            onChange={(event) => handleChange(event.target.value,'saleDate', setSaleDate)}
-            value={saleDate}
+            value={ saleDate }
+            onChange={ date => {
+              setSaleDate(date);
+              sale['saleDate'] = date;
+              saveToLocalStorage();
+            }}
           />
         </div>
-        <div className="col">
+        <div className="col" style={ colStyles }>
           <input
             id={`poentialSales${sale.saleId}`}
             style={inputStyles}
@@ -141,6 +147,18 @@ const inputStyles = {
   borderRadius: '7px',
   width: '100%',
   textAlign: 'center',
+  margin: '2px',
 };
+
+const colStyles = {
+  zIndex: '1',
+}
+
+const flatPickrOptions = {
+  enableTime: false,
+  dateFormat: "D d/m/y",
+  monthSelectorType: "static",
+  disableMobile: true,
+}
 
 export default Sale;

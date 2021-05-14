@@ -42,6 +42,7 @@ const divStyle = {
   backgroundColor: '#565656',
   justifyContent: 'space-evenly',
   color: 'white',
+  zIndex: '0',
 };
 
 const colStyle = {

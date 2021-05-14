@@ -6,6 +6,7 @@
   overflow: hidden;
   border-radius: 20px;
   margin: 2px;
+  outline: 2px solid #343a40;
 }
 
 .input-number span {
@@ -13,14 +14,14 @@
   left: 50%;
   margin-left: -20px;
   display: inline-block;
-  background-color: white;
+  background-color: #484848;
   height: 100%;
   width: 40px;
   border-radius: 20px;
   text-align: center;
   line-height: 40px;
   font-size: 16px;
-  color: #6C6DFF;
+  color: white;
   letter-spacing: -1px;
 }
 
@@ -33,7 +34,7 @@
   color: white;
   font-size: 20px;
   cursor: pointer;
-  background-color: rgba(255,255,255,.2);
+  background-color: #484848;
   transition: background-color .2s ease;
 }
 
