@@ -6,7 +6,7 @@ import FieldInput from '../FieldInput/FieldInput'
 import Flatpickr from "react-flatpickr";
 import "./flatpickr.css";
 
-function Sale({sale}) {
+function Sale({ sale }) {
   const { saveToLocalStorage } = useContext(SalesListContext);
   const [company, setCompany] = useState(sale.company);
   const [type, setType] = useState(sale.type);
@@ -18,28 +18,21 @@ function Sale({sale}) {
   const [saleDate, setSaleDate] = useState(sale.saleDate);
   const [potentialSales, setPotentialSales] = useState(sale.potentialSales);
 
-  function handleChange(value, field, setField) {
-    setField(value);
-    sale[field] = value;
-    saveToLocalStorage();
-  }
-
   return (
-    <>
-      <div style={divStyles} className="row">
-        <FieldInput sale={sale} value="type" placeholder="Type" field={ type } setField={ setType }/>
-        <FieldInput sale={sale} value="company" placeholder="Company" field={ company } setField={ setCompany }/>
-        <FieldInput sale={sale} value="quoteId" placeholder="Quote ID" field={ quoteId } setField={ setQuoteId }/>
-        <FieldInput sale={sale} value="email" placeholder="Email" field={ email } setField={ setEmail }/>
-        <FieldInput sale={sale} value="clientId" placeholder="Client ID" field={ clientId } setField={ setClientId }/>
+      <div style={ divStyles } className="row">
+        <FieldInput sale={ sale } value="type" placeholder="Type" field={ type } setField={ setType }/>
+        <FieldInput sale={ sale } value="company" placeholder="Company" field={ company } setField={ setCompany }/>
+        <FieldInput sale={ sale } value="quoteId" placeholder="Quote ID" field={ quoteId } setField={ setQuoteId }/>
+        <FieldInput sale={ sale } value="email" placeholder="Email" field={ email } setField={ setEmail }/>
+        <FieldInput sale={ sale } value="clientId" placeholder="Client ID" field={ clientId } setField={ setClientId }/>
 
         <div className="col" style={ colStyles }>
           <Flatpickr
             options={ flatPickrOptions }
             placeholder="Quote Expiry"
-            style={inputStyles}
+            style={ inputStyles }
             value={ quoteExpiry }
-            onChange={date => {
+            onChange={ date => {
               setQuoteExpiry(date);
               sale['quoteExpiry'] = date;
               saveToLocalStorage();
@@ -47,13 +40,13 @@ function Sale({sale}) {
           />
         </div>
 
-        <FieldInput sale={sale} value="status" placeholder="Status" field={ status } setField={ setStatus }/>
+        <FieldInput sale={ sale } value="status" placeholder="Status" field={ status } setField={ setStatus }/>
 
         <div className="col" style={ colStyles }>
           <Flatpickr
             options={ flatPickrOptions }
             placeholder="Sale Date"
-            style={inputStyles}
+            style={ inputStyles }
             value={ saleDate }
             onChange={ date => {
               setSaleDate(date);
@@ -63,11 +56,10 @@ function Sale({sale}) {
           />
         </div>
 
-        <FieldInput sale={sale} value="potentialSales" placeholder="Potential Sales" field={ potentialSales } setField={ setPotentialSales }/>
-        <DeleteIcon saleId={sale.saleId}/>
+        <FieldInput sale={ sale } value="potentialSales" placeholder="Potential Sales" field={ potentialSales } setField={ setPotentialSales }/>
+        <DeleteIcon saleId={ sale.saleId }/>
         <Utilisations sale={ sale } />
       </div>
-    </>
   );
 }
 

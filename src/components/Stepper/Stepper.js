@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { SalesListContext } from '../SaleList/SalesListContext';
 import './Stepper.css';
 
-function Stepper({utilisation, sale, type}) {
+function Stepper({ utilisation, sale, type }) {
   const { saveToLocalStorage } = useContext(SalesListContext);
   const [number, setNumber] = useState(utilisation);
 
@@ -26,6 +26,6 @@ function Stepper({utilisation, sale, type}) {
       <button type="button" onClick={ increment }>&#43;</button>
     </div>
   );
-};
+}
 
 export default Stepper;

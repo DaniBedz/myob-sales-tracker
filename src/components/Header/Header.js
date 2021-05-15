@@ -8,7 +8,7 @@ function Header() {
     <div style={ containerStyle }>
       <div className="row">
         <div className="col-8">
-          <img src={logo} alt="logo" style={ logoStyle }></img>
+          <img src={ logo } alt="logo" style={ logoStyle }></img>
         </div>
         <div className="col-4 d-flex justify-content-end align-items-start">
           <AddSaleInput />
@@ -17,7 +17,7 @@ function Header() {
       <ColumnHeaders />
     </div>
   );
-};
+}
 
 const containerStyle = {
   borderTop: '2px solid gray',
@@ -25,11 +25,11 @@ const containerStyle = {
   borderBottom: '3px solid #343a40',
   borderLeft: '3px solid #343a40',
   borderRadius: '3px',
-}
+};
 
 const logoStyle = {
   width: '100px',
   margin: '1rem',
-}
+};
 
 export default Header;

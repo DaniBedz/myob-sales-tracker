@@ -16,21 +16,21 @@ function AddSaleInput() {
   }
 
   return (
-    <div className="align-self-start" style={divStyles}>
+    <div className="align-self-start" style={ divStyles }>
       <input
         id="newCompanyNameInput"
-        onChange={handleChange}
+        onChange={ handleChange }
         type="text"
-        style={inputStyles}
+        style={ inputStyles }
         placeholder="Add new sale.."
-        value={newSaleText}
+        value={ newSaleText }
         autoFocus
         required
       />
       <button
         id="btn-add-sale"
-        onClick={handleSubmit}
-        style={plusButtonStyles}
+        onClick={ handleSubmit }
+        style={ plusButtonStyles }
         type="submit"
       >
         +

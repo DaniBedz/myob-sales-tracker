@@ -1,22 +1,22 @@
 import React, { useContext } from 'react';
 import { SalesListContext } from '../SaleList/SalesListContext';
 
-function FieldInput({sale, value, placeholder, field, setField}) {
+function FieldInput({ sale, value, placeholder, field, setField }) {
 
   const { saveToLocalStorage } = useContext(SalesListContext);
 
   return (
     <div className="col" style={ colStyles }>
       <input
-        id={`${value}_${sale.saleId}`}
-        style={inputStyles}
+        id={`${ value }_${ sale.saleId }`}
+        style={ inputStyles }
         type="text"
-        placeholder={placeholder}
-        onChange={(event) => handleChange(event.target.value, value, setField)}
+        placeholder={ placeholder }
+        onChange={ (event) => handleChange(event.target.value, value, setField) }
         value={ field }
       />
     </div>
-  )
+  );
 
   function handleChange(input, value, setField) {
     setField(input);

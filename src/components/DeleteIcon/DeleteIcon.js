@@ -5,10 +5,10 @@ function DeleteIcon({saleId}) {
   const { deleteSale } = useContext(SalesListContext);
 
   return (
-    <div className="col" style={deleteIconStyles}>
+    <div className="col" style={ deleteIconStyles }>
       <svg
-        onClick={()=> deleteSale(saleId)}
-        style={iconStyles}
+        onClick={ ()=> deleteSale(saleId) }
+        style={ iconStyles }
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
@@ -22,7 +22,7 @@ function DeleteIcon({saleId}) {
         </path>
       </svg>
     </div>
-  )
+  );
 }
 
 const deleteIconStyles = {
