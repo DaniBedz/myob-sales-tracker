@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import { SalesListContext } from '../SaleList/SalesListContext';
 import Utilisations from '../Utilisations/Utilisations';
+import FieldInput from '../FieldInput/FieldInput'
 import Flatpickr from "react-flatpickr";
 import "./flatpickr.css";
 
@@ -26,60 +27,16 @@ function Sale({sale}) {
   return (
     <>
       <div style={divStyles} className="row">
-        <div className="col" style={ colStyles }>
-          <input
-            id={`typeInput_${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Type"
-            onChange={(event) => handleChange(event.target.value,'type', setType)}
-            value={ type }
-          />
-        </div>
-        <div className="col" style={ colStyles }>
-          <input
-            id={`companyInput_${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Company name"
-            onChange={(event) => handleChange(event.target.value,'company', setCompany)}
-            value={ company }
-          />
-        </div>
-        <div className="col" style={ colStyles }>
-          <input
-            id={`quoteIdInput${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Quote ID"
-            className="no-outline"
-            onChange={(event) => handleChange(event.target.value,'quoteId', setQuoteId)}
-            value={ quoteId }
-          />
-        </div>
-        <div className="col" style={ colStyles }>
-          <input
-            id={`emailInput${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Email"
-            onChange={(event) => handleChange(event.target.value,'email', setEmail)}
-            value={email}
-          />
-        </div>
-        <div className="col" style={ colStyles }>
-          <input
-            id={`clientIdInput${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Client ID"
-            onChange={(event) => handleChange(event.target.value,'clientId', setClientId)}
-            value={clientId}
-          />
-        </div>
+        <FieldInput sale={sale} value="type" placeholder="Type" field={ type } setField={ setType }/>
+        <FieldInput sale={sale} value="company" placeholder="Company" field={ company } setField={ setCompany }/>
+        <FieldInput sale={sale} value="quoteId" placeholder="Quote ID" field={ quoteId } setField={ setQuoteId }/>
+        <FieldInput sale={sale} value="email" placeholder="Email" field={ email } setField={ setEmail }/>
+        <FieldInput sale={sale} value="clientId" placeholder="Client ID" field={ clientId } setField={ setClientId }/>
+
         <div className="col" style={ colStyles }>
           <Flatpickr
             options={ flatPickrOptions }
+            placeholder="Quote Expiry"
             style={inputStyles}
             value={ quoteExpiry }
             onChange={date => {
@@ -89,19 +46,13 @@ function Sale({sale}) {
             }}
           />
         </div>
-        <div className="col" style={ colStyles }>
-          <input
-            id={`statusInput${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Status"
-            onChange={(event) => handleChange(event.target.value,'status', setStatus)}
-            value={status}
-          />
-        </div>
+
+        <FieldInput sale={sale} value="status" placeholder="Status" field={ status } setField={ setStatus }/>
+
         <div className="col" style={ colStyles }>
           <Flatpickr
             options={ flatPickrOptions }
+            placeholder="Sale Date"
             style={inputStyles}
             value={ saleDate }
             onChange={ date => {
@@ -111,16 +62,8 @@ function Sale({sale}) {
             }}
           />
         </div>
-        <div className="col" style={ colStyles }>
-          <input
-            id={`poentialSales${sale.saleId}`}
-            style={inputStyles}
-            type="text"
-            placeholder="Potential Sales"
-            onChange={(event) => handleChange(event.target.value,'potentialSales', setPotentialSales)}
-            value={potentialSales}
-          />
-        </div>
+
+        <FieldInput sale={sale} value="potentialSales" placeholder="Potential Sales" field={ potentialSales } setField={ setPotentialSales }/>
         <DeleteIcon saleId={sale.saleId}/>
         <Utilisations sale={ sale } />
       </div>
