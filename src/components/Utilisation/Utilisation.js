@@ -7,7 +7,7 @@ function Utilisation({ sale, type, heading }) {
         <span>{ heading }</span>
         <Stepper sale={ sale } type={ type } utilisation={ sale.utilisations[type] } />
     </div>
-  )
+  );
 }
 
 const colStyle = {

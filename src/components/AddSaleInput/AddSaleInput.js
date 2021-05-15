@@ -65,7 +65,7 @@ const plusButtonStyles = {
 };
 
 const divStyles = {
-  margin: '1rem',
+  margin: '1.5rem 1.5rem 1rem 1rem',
   width: '100%',
   display: 'flex',
   zIndex: '1',

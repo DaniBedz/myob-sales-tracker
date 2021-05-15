@@ -5,7 +5,7 @@ import { SalesListContext } from './SalesListContext';
 function SaleList() {
   const { sales } = useContext(SalesListContext);
   return (
-    <div style={divStyle}>
+    <div style={ divStyle }>
       { sales.map(sale => {
         return <Sale sale={ sale } key={ sale.saleId } />
       }) }
