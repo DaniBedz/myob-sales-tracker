@@ -49,8 +49,16 @@ export function SalesListContextProvider(props) {
     saveToLocalStorage();
     }, [sales, saveToLocalStorage]);
 
+  // function deleteSale(saleId) {
+  //   alertify.confirm('Delete Sale', 'Are you sure?', function() {
+  //     setSales(sales.filter(sale => sale.saleId !== saleId));
+  //     saveToLocalStorage();
+  //     alertify.success('Deleted');
+  //     }, function() {
+  //     alertify.error('Cancelled');
+  //   });
   function deleteSale(saleId) {
-    alertify.confirm('Delete Sale', 'Are you sure?', function() {
+    alertify.confirm('Delete Sale', 'Are you sure? <button class="archiveBtn">Archive</button>', function() {
       setSales(sales.filter(sale => sale.saleId !== saleId));
       saveToLocalStorage();
       alertify.success('Deleted');

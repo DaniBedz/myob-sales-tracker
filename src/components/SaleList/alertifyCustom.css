@@ -113,3 +113,20 @@
 .alertify .ajs-modal {
   top: 20%;
 }
+
+.archiveBtn {
+  color: orange;;
+  background-color: #565656;
+  border: 2px solid #343a40;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: 88px;
+  min-height: 35px;
+  position: relative;
+  right: -4rem;
+  top: 3.7rem;
+}
+.archiveBtn:hover {
+  background-color: #343a40;
+}
