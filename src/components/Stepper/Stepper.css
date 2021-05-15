@@ -49,3 +49,7 @@
 .input-number button:hover {
   background-color: rgba(255,255,255,.25);
 }
+
+.plusMinus:hover {
+  background: linear-gradient(90deg, #6c00ac, #ff0077);
+}

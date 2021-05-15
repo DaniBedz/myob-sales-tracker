@@ -1,5 +1,6 @@
 import React from 'react';
 import Utilisation from '../Utilisation/Utilisation';
+import DeleteIcon from '../DeleteIcon/DeleteIcon';
 
 function UtilisationPanel({ sale }) {
   return (
@@ -11,6 +12,7 @@ function UtilisationPanel({ sale }) {
       <Utilisation sale={ sale } type="OAQ" heading="OAQ" />
       <Utilisation sale={ sale } type="STP" heading="STP" />
       <Utilisation sale={ sale } type="offlineFile" heading="Offline File" />
+      <DeleteIcon saleId={ sale.saleId }/>
     </div>
   );
 }

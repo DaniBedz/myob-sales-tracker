@@ -33,10 +33,51 @@ input[type="text"]:focus {
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }
 
-.plusMinus:focus-within {
-  background: linear-gradient(90deg, #6c00ac, #ff0077);
-}
-
 .row {
   --bs-gutter-x: 0.5rem;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  border: 2px solid #343a40;
+  border-radius: 7px;
+  padding-bottom: 0.19rem;
+  z-index: 1;
+  position: relative;
+}
+
+.dropdown-toggle:focus {
+  outline: none !important;
+  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4 !important;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  background-color: #565656;
+  width: 96%;
+  margin: 3px;
+  border: 2px solid #343a40;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #6000a4;
+  border: 2px solid #343a40;
+}
+
+.btn-primary:focus, .show > .btn-primary.dropdown-toggle, .btn-primary:hover, .btn-primary:focus-visible {
+  border: 2px solid #343a40;
+  background-color: #b50191;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: #484848;
+}
+
+svg:hover:not(#myob-logo) {
+  outline: none !important;
+  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }

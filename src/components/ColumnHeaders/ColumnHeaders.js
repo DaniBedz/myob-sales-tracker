@@ -9,10 +9,9 @@ function ColumnHeaders() {
       <div className="col" style={ columnStyles }>Email</div>
       <div className="col" style={ columnStyles }>Client ID</div>
       <div className="col" style={ columnStyles }>Quote Expiry</div>
-      <div className="col" style={ columnStyles }>Status</div>
       <div className="col" style={ columnStyles }>Sale Date</div>
       <div className="col" style={ columnStyles }>Potential Sales</div>
-      <div className="col" style={ columnStyles }>Delete</div>
+      <div className="col-2" style={ columnStyles }>Notes</div>
     </div>
   );
 };

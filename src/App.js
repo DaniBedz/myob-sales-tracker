@@ -1,4 +1,5 @@
 import React from 'react';
+import './bootstrap.min.css';
 import './App.css';
 import Header from './components/Header/Header';
 import SaleList from './components/SaleList/SaleList';

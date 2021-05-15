@@ -1,23 +1,23 @@
 import React from 'react';
-import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import UtilisationPanel from '../UtilisationPanel/UtilisationPanel';
 import FieldInput from '../FieldInput/FieldInput';
 import CalendarInput from '../CalendarInput/CalendarInput';
+import TypeDropdown from '../TypeDropdown/TypeDropdown';
+import NotesInput from '../NotesInput/NotesInput';
 
 function Sale({ sale }) {
 
   return (
     <div style={ divStyles } className="row">
-      <FieldInput sale={ sale } value="type" placeholder="Type" />
+      <TypeDropdown sale={ sale } />
       <FieldInput sale={ sale } value="company" placeholder="Company" />
       <FieldInput sale={ sale } value="quoteId" placeholder="Quote ID" />
       <FieldInput sale={ sale } value="email" placeholder="Email" />
       <FieldInput sale={ sale } value="clientId" placeholder="Client ID" />
       <CalendarInput sale={ sale } value="quoteExpiry" placeholder="Quote Expiry" />
-      <FieldInput sale={ sale } value="status" placeholder="Status" />
       <CalendarInput sale={ sale } value="saleDate" placeholder="Sale Date" />
       <FieldInput sale={ sale } value="potentialSales" placeholder="Potential Sales" />
-      <DeleteIcon saleId={ sale.saleId }/>
+      <NotesInput sale={ sale } />
       <UtilisationPanel sale={ sale } />
     </div>
   );

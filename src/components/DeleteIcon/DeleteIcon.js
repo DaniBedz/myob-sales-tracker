@@ -5,7 +5,7 @@ function DeleteIcon({saleId}) {
   const { deleteSale } = useContext(SalesListContext);
 
   return (
-    <div className="col" style={ deleteIconStyles }>
+    <div className="col-2" style={ deleteIconStyles }>
       <svg
         onClick={ ()=> deleteSale(saleId) }
         style={ iconStyles }
@@ -13,7 +13,7 @@ function DeleteIcon({saleId}) {
         focusable="false"
         data-prefix="fas"
         data-icon="trash-alt"
-        className="svg-inline--fa fa-trash-alt fa-w-14"
+        className="delete"
         role="img" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512">
         <path
@@ -26,7 +26,6 @@ function DeleteIcon({saleId}) {
 }
 
 const deleteIconStyles = {
-  width: '100%',
   textAlign: 'center',
   color: '#565656',
   cursor: 'pointer'
@@ -35,6 +34,8 @@ const deleteIconStyles = {
 const iconStyles = {
   width: '2rem',
   color: 'silver',
+  marginLeft: '0.5rem',
+  marginTop: '1rem',
 }
 
 export default DeleteIcon;

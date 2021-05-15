@@ -16,15 +16,15 @@ export function SalesListContextProvider(props) {
   function addSale(company) {
     const newSaleTemplate = {
       saleId: uuid(),
-      type: '',
+      type: 'None',
       company,
       quoteId: '',
       email: '',
       clientId: '',
       quoteExpiry: '',
-      status: '',
       saleDate: '',
       potentialSales: '',
+      Notes: '',
       utilisations: {
         subs: 0,
         bankFeed: 0,
