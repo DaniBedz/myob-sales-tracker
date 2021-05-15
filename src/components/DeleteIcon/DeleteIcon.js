@@ -34,7 +34,7 @@ const deleteIconStyles = {
 
 const iconStyles = {
   width: '2rem',
-  color: '#343a40',
+  color: 'silver',
 }
 
 export default DeleteIcon;

@@ -23,6 +23,7 @@ const columnStyles = {
   justifyContent: 'space-evenly',
   display: 'flex',
   color: 'white',
+  userSelect: 'none',
 }
 
 const rowStyles = {

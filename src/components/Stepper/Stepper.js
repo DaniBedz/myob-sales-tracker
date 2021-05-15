@@ -7,14 +7,14 @@ function Stepper({ utilisation, sale, type }) {
   const [number, setNumber] = useState(utilisation);
 
   function increment() {
-    setNumber(prevNumber => prevNumber += 1);
+    setNumber(prevNumber => prevNumber + 1);
     sale.utilisations[type]++;
     saveToLocalStorage();
   }
 
   function decrement() {
     if (number === 0) return;
-    setNumber(prevNumber => prevNumber -= 1);
+    setNumber(prevNumber => prevNumber - 1);
     sale.utilisations[type]--;
     saveToLocalStorage();
   }

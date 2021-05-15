@@ -13,6 +13,7 @@ function Utilisation({ sale, type, heading }) {
 const colStyle = {
   display: 'grid',
   justifyContent: 'space-evenly',
+  userSelect: 'none',
 };
 
 export default Utilisation
