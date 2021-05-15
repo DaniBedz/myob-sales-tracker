@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "NeutroMYOB-Medium";
+  src: local("NeutroMYOB-Medium"),
+    url("./fonts/NeutroMYOB-Medium.woff2") format("woff2");
+  font-weight: normal;
+}
+
 html, body {
   width: 100%;
   background-color: #343a40;
@@ -7,11 +14,29 @@ html, body {
   overflow-x: hidden;
 }
 
-.row {
-  --bs-gutter-x: 0.5rem;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 input[type="text"]:focus {
   outline: none;
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
+}
+
+.plusMinus:focus-within {
+  background: linear-gradient(90deg, #6c00ac, #ff0077);
+}
+
+.row {
+  --bs-gutter-x: 0.5rem;
 }

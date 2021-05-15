@@ -21,9 +21,9 @@ function Stepper({ utilisation, sale, type }) {
 
   return (
     <div className="input-number">
-      <button type="button" onClick={ decrement }>&minus;</button>
+      <button type="button" className='plusMinus' onClick={ decrement }>&minus;</button>
       <span>{ number }</span>
-      <button type="button" onClick={ increment }>&#43;</button>
+      <button type="button" className='plusMinus' onClick={ increment }>&#43;</button>
     </div>
   );
 }
