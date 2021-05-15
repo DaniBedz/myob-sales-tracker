@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { SalesListContext } from '../SaleList/SalesListContext';
 import Flatpickr from "react-flatpickr";
 import "./flatpickr.css";
 
-function CalendarInput({ sale, value, placeholder, field, setField }) {
+function CalendarInput({ sale, value, placeholder }) {
 
   const { saveToLocalStorage } = useContext(SalesListContext);
+  const [date, setDate] = useState(sale[value]);
 
   return (
     <div className="col" style={ colStyles }>
@@ -13,10 +14,10 @@ function CalendarInput({ sale, value, placeholder, field, setField }) {
             options={ flatPickrOptions }
             placeholder={ placeholder }
             style={ inputStyles }
-            value={ field }
-            onChange={ date => {
-              setField(date);
-              sale[value] = date;
+            value={ date }
+            onChange={ dateValue => {
+              setDate(dateValue);
+              sale[value] = dateValue;
               saveToLocalStorage();
             }}
           />

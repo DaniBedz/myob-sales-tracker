@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { SalesListContext } from '../SaleList/SalesListContext';
 
-function FieldInput({ sale, value, placeholder, field, setField }) {
+function FieldInput({ sale, value, placeholder }) {
 
   const { saveToLocalStorage } = useContext(SalesListContext);
+  const [inputValue, setInputValue] = useState(sale[value]);
+
 
   return (
     <div className="col" style={ colStyles }>
@@ -12,14 +14,14 @@ function FieldInput({ sale, value, placeholder, field, setField }) {
         style={ inputStyles }
         type="text"
         placeholder={ placeholder }
-        onChange={ (event) => handleChange(event.target.value, value, setField) }
-        value={ field }
+        onChange={ (event) => handleChange(event.target.value) }
+        value={ inputValue }
       />
     </div>
   );
 
-  function handleChange(input, value, setField) {
-    setField(input);
+  function handleChange(input) {
+    setInputValue(input);
     sale[value] = input;
     saveToLocalStorage();
   }
