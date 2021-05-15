@@ -1,7 +1,7 @@
 import React from 'react';
 import Stepper from '../Stepper/Stepper';
 
-function Utilisations({ sale }) {
+function UtilisationPanel({ sale }) {
   return (
     <div className='row' style={ divStyle }>
       <div className='col' style={ colStyle }>
@@ -50,4 +50,4 @@ const colStyle = {
   justifyContent: 'space-evenly',
 };
 
-export default Utilisations;
+export default UtilisationPanel;
