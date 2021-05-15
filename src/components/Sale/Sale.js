@@ -1,8 +1,8 @@
 import React from 'react';
 import DeleteIcon from '../DeleteIcon/DeleteIcon';
 import UtilisationPanel from '../UtilisationPanel/UtilisationPanel';
-import FieldInput from '../FieldInput/FieldInput'
-import CalendarInput from '../CalendarInput/CalendarInput'
+import FieldInput from '../FieldInput/FieldInput';
+import CalendarInput from '../CalendarInput/CalendarInput';
 
 function Sale({ sale }) {
 
