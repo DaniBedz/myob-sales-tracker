@@ -63,8 +63,10 @@ export function SalesListContextProvider(props) {
     alertify.confirm('Delete Sale', `Are you sure? <button id="archive_${ saleToDelete.saleId }" class="archiveBtn">Archive</button>`, function() {
       setSales(sales.filter(sale => sale.saleId !== saleToDelete.saleId));
       saveSalesToLocalStorage();
+      document.querySelector('.archiveBtn').removeEventListener('click', archiveSale);
       alertify.success('Deleted');
       }, function() {
+      document.querySelector('.archiveBtn').removeEventListener('click', archiveSale);
       alertify.error('Cancelled');
     });
   };
