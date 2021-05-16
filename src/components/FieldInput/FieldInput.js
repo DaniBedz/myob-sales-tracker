@@ -3,7 +3,7 @@ import { SalesListContext } from '../SaleList/SalesListContext';
 
 function FieldInput({ sale, value, placeholder }) {
 
-  const { saveToLocalStorage } = useContext(SalesListContext);
+  const { saveSalesToLocalStorage } = useContext(SalesListContext);
   const [inputValue, setInputValue] = useState(sale[value]);
 
 
@@ -23,7 +23,7 @@ function FieldInput({ sale, value, placeholder }) {
   function handleChange(input) {
     setInputValue(input);
     sale[value] = input;
-    saveToLocalStorage();
+    saveSalesToLocalStorage();
   }
 }
 const inputStyles = {

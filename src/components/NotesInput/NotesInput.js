@@ -3,14 +3,13 @@ import { SalesListContext } from '../SaleList/SalesListContext';
 
 function  NotesInput({ sale }) {
 
-  const { saveToLocalStorage } = useContext(SalesListContext);
+  const { saveSalesToLocalStorage } = useContext(SalesListContext);
   const [notes, setNotes] = useState(sale.notes);
-
 
   return (
     <div className="col-2" style={ colStyles }>
       <input
-        id={`notes_${ sale.saleId }`}
+        id={ `notes_${ sale.saleId }` }
         style={ inputStyles }
         type="text"
         placeholder="Notes"
@@ -23,7 +22,7 @@ function  NotesInput({ sale }) {
   function handleChange(input) {
     setNotes(input);
     sale.notes = input;
-    saveToLocalStorage();
+    saveSalesToLocalStorage();
   }
 }
 const inputStyles = {

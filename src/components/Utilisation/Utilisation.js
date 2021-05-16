@@ -16,4 +16,4 @@ const colStyle = {
   userSelect: 'none',
 };
 
-export default Utilisation
+export default Utilisation;

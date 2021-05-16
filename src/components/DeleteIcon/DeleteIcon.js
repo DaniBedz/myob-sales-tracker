@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { SalesListContext } from '../SaleList/SalesListContext';
 
-function DeleteIcon({saleId}) {
+function DeleteIcon({ sale }) {
   const { deleteSale } = useContext(SalesListContext);
 
   return (
     <div className="col-2" style={ deleteIconStyles }>
       <svg
-        onClick={ ()=> deleteSale(saleId) }
+        onClick={ () => deleteSale(sale) }
         style={ iconStyles }
         aria-hidden="true"
         focusable="false"

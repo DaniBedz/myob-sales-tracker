@@ -4,6 +4,7 @@ import * as alertify from 'alertifyjs';
 import defaults from './alertifyDefaults';
 import 'alertifyjs/build/css/alertify.css';
 import './alertifyCustom.css';
+import './alertifyCustom.css';
 
 alertify.defaults = defaults;
 
@@ -12,6 +13,7 @@ export const SalesListContext = createContext();
 export function SalesListContextProvider(props) {
 
   const [sales, setSales] = useState(JSON.parse(window.localStorage.getItem('sales')) || []);
+  const [archivedSales, setArchivedSales] = useState(JSON.parse(window.localStorage.getItem('archivedSales')) || []);
 
   function addSale(company) {
     const newSaleTemplate = {
@@ -38,37 +40,54 @@ export function SalesListContextProvider(props) {
     setSales([...sales, newSaleTemplate]);
   }
 
-  const saveToLocalStorage = useCallback(() => {
-      if (!window.localStorage.getItem('sales')) {
-        window.localStorage.setItem('sales', JSON.stringify([]));
-      }
-      window.localStorage.setItem('sales', JSON.stringify(sales));
-  }, [sales]);
+  function deleteSale(saleToDelete) {
+    const saleString = JSON.stringify(saleToDelete);
 
-  useEffect(() => {
-    saveToLocalStorage();
-    }, [sales, saveToLocalStorage]);
+    function archiveSale() {
+      setArchivedSales([...archivedSales, JSON.parse(saleString)]);
+      saveArchivedSalesToLocalStorage();
+      alertify.success('Archived');
 
-  // function deleteSale(saleId) {
-  //   alertify.confirm('Delete Sale', 'Are you sure?', function() {
-  //     setSales(sales.filter(sale => sale.saleId !== saleId));
-  //     saveToLocalStorage();
-  //     alertify.success('Deleted');
-  //     }, function() {
-  //     alertify.error('Cancelled');
-  //   });
-  function deleteSale(saleId) {
-    alertify.confirm('Delete Sale', 'Are you sure? <button class="archiveBtn">Archive</button>', function() {
-      setSales(sales.filter(sale => sale.saleId !== saleId));
-      saveToLocalStorage();
+      setSales(sales.filter(sale => sale.saleId !== saleToDelete.saleId));
+      document.querySelector('.archiveBtn').removeEventListener('click', archiveSale);
+      document.querySelector('.ajs-close').click();
+    }
+
+    setTimeout(document.querySelector('.archiveBtn').addEventListener('click', archiveSale), 1);
+
+    alertify.confirm('Delete Sale', `Are you sure? <button id="archive_${ saleToDelete.saleId }" class="archiveBtn">Archive</button>`, function() {
+      setSales(sales.filter(sale => sale.saleId !== saleToDelete.saleId));
+      saveSalesToLocalStorage();
       alertify.success('Deleted');
       }, function() {
       alertify.error('Cancelled');
     });
   };
 
+  const saveSalesToLocalStorage = useCallback(() => {
+      if (!window.localStorage.getItem('sales')) {
+        window.localStorage.setItem('sales', JSON.stringify([]));
+      }
+      window.localStorage.setItem('sales', JSON.stringify(sales));
+  }, [sales]);
+
+  const saveArchivedSalesToLocalStorage = useCallback(() => {
+      if (!window.localStorage.getItem('archivedSales')) {
+        window.localStorage.setItem('archivedSales', JSON.stringify([]));
+      }
+      window.localStorage.setItem('archivedSales', JSON.stringify(archivedSales));
+  }, [archivedSales]);
+
+  useEffect(() => {
+    saveSalesToLocalStorage();
+    }, [sales, saveSalesToLocalStorage]);
+
+  useEffect(() => {
+    saveArchivedSalesToLocalStorage();
+    }, [archivedSales, saveArchivedSalesToLocalStorage]);
+
   return (
-    <SalesListContext.Provider value={{ sales, setSales, addSale, saveToLocalStorage, deleteSale, alertify }}>
+    <SalesListContext.Provider value={{ sales, setSales, addSale, saveSalesToLocalStorage, deleteSale }}>
       { props.children }
     </SalesListContext.Provider>
   );

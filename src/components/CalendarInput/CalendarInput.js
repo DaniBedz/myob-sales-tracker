@@ -5,7 +5,7 @@ import "./flatpickr.css";
 
 function CalendarInput({ sale, value, placeholder }) {
 
-  const { saveToLocalStorage } = useContext(SalesListContext);
+  const { saveSalesToLocalStorage } = useContext(SalesListContext);
   const [date, setDate] = useState(sale[value]);
 
   return (
@@ -18,7 +18,7 @@ function CalendarInput({ sale, value, placeholder }) {
             onChange={ dateValue => {
               setDate(dateValue);
               sale[value] = dateValue;
-              saveToLocalStorage();
+              saveSalesToLocalStorage();
             }}
           />
         </div>
