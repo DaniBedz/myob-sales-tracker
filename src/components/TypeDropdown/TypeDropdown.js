@@ -8,7 +8,7 @@ function TypeDropdown({ sale }) {
 
   return (
       <Dropdown className="col" style={ dropDownStyle }>
-        <Dropdown.Toggle style={ buttonStyle } id={ `$type_${ sale.saleId }` }>{ input }</Dropdown.Toggle>
+        <Dropdown.Toggle style={ buttonStyle } id={ `type_${ sale.saleId }` }>{ input }</Dropdown.Toggle>
         <Dropdown.Menu style={ menuStyle }>
           <Dropdown.Item style={ buttonStyle } onSelect={ (value) => saveValue(value) } eventKey="None">None</Dropdown.Item>
           <Dropdown.Item style={ buttonStyle } onSelect={ (value) => saveValue(value) } eventKey="Quote">Quote</Dropdown.Item>
@@ -39,6 +39,7 @@ const menuStyle = {
 const buttonStyle = {
   color: 'white',
   width: '100%',
+  height: '1.91rem',
 }
 
 export default TypeDropdown;
