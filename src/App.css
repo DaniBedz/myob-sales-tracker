@@ -86,3 +86,9 @@ svg:hover:not(#myob-logo) {
   outline: none !important;
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }
+
+.dropdown-toggle.btn.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
