@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-overlays/esm/Dropdown.js b/node_modules/react-overlays/esm/Dropdown.js
+index 78924a4..fca4bbe 100644
+--- a/node_modules/react-overlays/esm/Dropdown.js
++++ b/node_modules/react-overlays/esm/Dropdown.js
+@@ -235,7 +235,7 @@ function Dropdown(_ref) {
+         // On `keyup` the target is the element being tagged TO which we use to check
+         // if focus has left the menu
+         addEventListener(document, 'keyup', function (e) {
+-          if (e.key === 'Tab' && !e.target || !menuRef.current.contains(e.target)) {
+           if (e.key === 'Tab' && !e.target) {
+             onToggle(false, event);
+           }
+          }, {

@@ -53,7 +53,12 @@ export function SalesListContextProvider(props) {
       document.querySelector('.ajs-close').click();
     }
 
-    setTimeout(document.querySelector('.archiveBtn').addEventListener('click', archiveSale), 1);
+    function addArchiveBtnEvent() {
+      const archiveBtn = document.querySelector('.archiveBtn');
+      archiveBtn.addEventListener('click', archiveSale);
+    }
+
+    setTimeout(addArchiveBtnEvent, 1);
 
     alertify.confirm('Delete Sale', `Are you sure? <button id="archive_${ saleToDelete.saleId }" class="archiveBtn">Archive</button>`, function() {
       setSales(sales.filter(sale => sale.saleId !== saleToDelete.saleId));

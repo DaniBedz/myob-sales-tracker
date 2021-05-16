@@ -51,6 +51,11 @@ input[type="text"]:focus {
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4 !important;
 }
 
+#btn-add-sale:focus {
+  outline: none !important;
+  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4 !important;
+}
+
 .dropdown-toggle::after {
   display: none;
 }
