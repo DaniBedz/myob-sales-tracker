@@ -50,6 +50,6 @@
   background-color: rgba(255,255,255,.25);
 }
 
-.plusMinus:hover {
+.plusMinus:hover, .plusMinus:focus {
   background: linear-gradient(90deg, #6c00ac, #ff0077);
 }

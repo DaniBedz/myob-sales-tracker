@@ -28,11 +28,6 @@ code {
     monospace;
 }
 
-input[type="text"]:focus {
-  outline: none;
-  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
-}
-
 .row {
   --bs-gutter-x: 0.5rem;
 }
@@ -44,16 +39,6 @@ input[type="text"]:focus {
   padding-bottom: 0.19rem;
   z-index: 1;
   position: relative;
-}
-
-.dropdown-toggle:focus {
-  outline: none !important;
-  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4 !important;
-}
-
-#btn-add-sale:focus {
-  outline: none !important;
-  box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4 !important;
 }
 
 .dropdown-toggle::after {
@@ -82,7 +67,7 @@ input[type="text"]:focus {
     background-color: #484848;
 }
 
-svg:hover:not(#myob-logo) {
+svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus {
   outline: none !important;
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }
