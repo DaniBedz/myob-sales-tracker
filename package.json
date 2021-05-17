@@ -2,6 +2,38 @@
   "name": "myob-sales-tracker",
   "version": "0.1.0",
   "private": true,
+  "babel": {
+    "mode": "development",
+    "entry": "./src/scripts/app.jsx",
+    "output": { "path": "path.resolve(__dirname, dist)", "filename": "bundle.js" },
+    "module": {
+      "rules": [
+        {
+          "test": "/\\.jsx?/i",
+          "exclude": "/node_modules/i",
+          "use": {
+            "loader": "babel-loader",
+            "options": {
+              "presets": ["@babel/preset-env", "@babel/preset-react"]
+            }
+          }
+        },
+        {
+          "test": "/\\.s?css?/i",
+          "use": [
+            {
+              "loader": "MiniCssExtractPlugin.loader",
+              "options": {
+                "publicPath": "/dist"
+              }
+            },
+            "css-loader",
+            "sass-loader"
+          ]
+        }
+      ]
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
@@ -26,8 +58,29 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "react/prop-types": "off",
+      "no-param-reassign": "off",
+      "prettier/prettier": "error",
+      "no-console": "warn",
+      "import/extensions": [
+        0,
+        "ignorePackages"
+      ]
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false
   },
   "browserslist": {
     "production": [
@@ -42,6 +95,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.13.13",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
