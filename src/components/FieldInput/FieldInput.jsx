@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { SalesListContext } from '../SaleList/SalesListContext.jsx';
+import { SalesListContext } from '../SaleList/SalesListContext';
 
 const inputStyles = {
   backgroundColor: '#484848',

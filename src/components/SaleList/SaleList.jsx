@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Sale from '../Sale/Sale';
-import { SalesListContext } from './SalesListContext.jsx';
+import { SalesListContext } from './SalesListContext';
 
 const divStyle = {
   margin: '0rem 0.25rem',

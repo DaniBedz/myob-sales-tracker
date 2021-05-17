@@ -1,6 +1,6 @@
 import React from 'react';
-import AddSaleInput from '../AddSaleInput/AddSaleInput.jsx';
-import ColumnHeaders from '../ColumnHeaders/ColumnHeaders.jsx';
+import AddSaleInput from '../AddSaleInput/AddSaleInput';
+import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
 import '../../fonts/NeutroMYOB-Medium.woff2';
 
 const containerStyle = {

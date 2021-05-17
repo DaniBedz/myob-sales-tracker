@@ -1,9 +1,9 @@
 import React from 'react';
-import UtilisationPanel from '../UtilisationPanel/UtilisationPanel.jsx';
-import FieldInput from '../FieldInput/FieldInput.jsx';
-import CalendarInput from '../CalendarInput/CalendarInput.jsx';
-import TypeDropdown from '../TypeDropdown/TypeDropdown.jsx';
-import NotesInput from '../NotesInput/NotesInput.jsx';
+import UtilisationPanel from '../UtilisationPanel/UtilisationPanel';
+import FieldInput from '../FieldInput/FieldInput';
+import CalendarInput from '../CalendarInput/CalendarInput';
+import TypeDropdown from '../TypeDropdown/TypeDropdown';
+import NotesInput from '../NotesInput/NotesInput';
 
 const divStyles = {
   backgroundColor: '#565656',

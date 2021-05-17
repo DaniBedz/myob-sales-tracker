@@ -106,7 +106,7 @@ export function SalesListContextProvider(props) {
     saveArchivedSalesToLocalStorage();
   }, [archivedSales, saveArchivedSalesToLocalStorage]);
 
-  const children = { props };
+  const { children } = props;
   return (
     <SalesListContext.Provider
       value={{

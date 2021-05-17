@@ -2,38 +2,6 @@
   "name": "myob-sales-tracker",
   "version": "0.1.0",
   "private": true,
-  "babel": {
-    "mode": "development",
-    "entry": "./src/scripts/app.jsx",
-    "output": { "path": "path.resolve(__dirname, dist)", "filename": "bundle.js" },
-    "module": {
-      "rules": [
-        {
-          "test": "/\\.jsx?/i",
-          "exclude": "/node_modules/i",
-          "use": {
-            "loader": "babel-loader",
-            "options": {
-              "presets": ["@babel/preset-env", "@babel/preset-react"]
-            }
-          }
-        },
-        {
-          "test": "/\\.s?css?/i",
-          "use": [
-            {
-              "loader": "MiniCssExtractPlugin.loader",
-              "options": {
-                "publicPath": "/dist"
-              }
-            },
-            "css-loader",
-            "sass-loader"
-          ]
-        }
-      ]
-    }
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
@@ -95,7 +63,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.13.13",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
