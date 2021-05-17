@@ -52,6 +52,9 @@ function AddSaleInput() {
       <input
         id="newCompanyNameInput"
         onChange={handleChange}
+        onKeyUp={(e) => {
+          if (e.code === 'Enter') handleSubmit();
+        }}
         type="text"
         style={inputStyles}
         placeholder="Add new sale.."
