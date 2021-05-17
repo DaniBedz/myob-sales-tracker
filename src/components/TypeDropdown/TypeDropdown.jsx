@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { SalesListContext } from '../SaleList/SalesListContext';
+import { SalesListContext } from '../Contexts/SalesListContext';
 
 const dropDownStyle = {
   margin: '2px',

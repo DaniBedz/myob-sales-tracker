@@ -3,7 +3,7 @@ import './bootstrap.min.css';
 import './App.css';
 import Header from './components/Header/Header';
 import SaleList from './components/SaleList/SaleList';
-import { SalesListContextProvider } from './components/SaleList/SalesListContext';
+import { SalesListContextProvider } from './components/Contexts/SalesListContext';
 
 const appStyles = {
   backgroundColor: '#565656',

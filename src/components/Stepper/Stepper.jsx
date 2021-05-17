@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { SalesListContext } from '../SaleList/SalesListContext';
+import { SalesListContext } from '../Contexts/SalesListContext';
 import './Stepper.css';
 
 function Stepper({ utilisation, sale, type }) {

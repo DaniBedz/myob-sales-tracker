@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Flatpickr from 'react-flatpickr';
-import { SalesListContext } from '../SaleList/SalesListContext';
+import { SalesListContext } from '../Contexts/SalesListContext';
 import './flatpickr.css';
 
 const inputStyles = {

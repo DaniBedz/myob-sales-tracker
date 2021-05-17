@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import * as alertify from 'alertifyjs';
-import defaults from './alertifyDefaults';
+import defaults from '../SaleList/alertifyDefaults';
 import 'alertifyjs/build/css/alertify.css';
-import './alertifyCustom.css';
+import '../SaleList/alertifyCustom.css';
 
 alertify.defaults = defaults;
 

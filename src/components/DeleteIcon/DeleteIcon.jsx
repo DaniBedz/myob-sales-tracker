@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { SalesListContext } from '../SaleList/SalesListContext';
+import { SalesListContext } from '../Contexts/SalesListContext';
 
 const deleteIconStyles = {
   textAlign: 'center',
