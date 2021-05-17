@@ -67,7 +67,7 @@ code {
     background-color: #484848;
 }
 
-svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus, .highlighted {
+svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus, .highlighted, .notes-input:focus {
   outline: none !important;
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }
@@ -76,4 +76,15 @@ svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #bt
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+}
+
+.notes-input:hover, .notes-input:focus {
+  height: 6rem !important;
+  text-align: left !important;
+}
+
+textarea {
+  resize: none;
 }

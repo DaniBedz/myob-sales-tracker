@@ -6,9 +6,11 @@ const inputStyles = {
   border: '2px solid #343a40',
   color: 'white',
   borderRadius: '7px',
-  width: '100%',
+  width: '16%',
   textAlign: 'center',
   margin: '2px',
+  height: '1.87rem',
+  position: 'absolute',
 };
 
 const colStyles = {
@@ -27,9 +29,10 @@ function NotesInput({ sale }) {
 
   return (
     <div className="col-2" style={colStyles}>
-      <input
+      <textarea
         id={`notes_${sale.saleId}`}
         style={inputStyles}
+        className="notes-input"
         type="text"
         placeholder="Notes"
         onChange={(event) => handleChange(event.target.value)}
