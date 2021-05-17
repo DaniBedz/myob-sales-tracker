@@ -23,7 +23,14 @@ function DeleteIcon({ sale }) {
 
   return (
     <div className="col-2" style={deleteIconStyles}>
-      <button type="button" className="deleteBtn" style={buttonStyles}>
+      <button
+        type="button"
+        className="deleteBtn"
+        style={buttonStyles}
+        onKeyUp={(e) => {
+          if (e.code === 'Enter' || e.code === 'Space') deleteSale(sale);
+        }}
+      >
         <svg
           onClick={() => deleteSale(sale)}
           style={iconStyles}
