@@ -78,24 +78,33 @@ export function SalesListContextProvider(props) {
 
     setTimeout(addArchiveBtnEvent, 1);
 
-    alertify.confirm(
-      'Delete Sale',
-      `Are you sure? <button id="archive_${saleToDelete.saleId}" class="archiveBtn">Archive</button>`,
-      () => {
-        setSales(sales.filter((sale) => sale.saleId !== saleToDelete.saleId));
-        saveSalesToLocalStorage();
-        document
-          .querySelector('.archiveBtn')
-          .removeEventListener('click', archiveSale);
-        alertify.success('Deleted');
-      },
-      () => {
-        document
-          .querySelector('.archiveBtn')
-          .removeEventListener('click', archiveSale);
-        alertify.error('Cancelled');
-      }
-    );
+    alertify
+      .confirm(
+        'Delete Sale',
+        `Are you sure? <button id="archive_${saleToDelete.saleId}" class="archiveBtn">Archive</button>`,
+        () => {
+          setSales(sales.filter((sale) => sale.saleId !== saleToDelete.saleId));
+          saveSalesToLocalStorage();
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', archiveSale);
+          alertify.success('Deleted');
+        },
+        () => {
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', archiveSale);
+          alertify.error('Cancelled');
+        }
+      )
+      .set({
+        invokeOnCloseOff: false,
+        oncancel() {
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', archiveSale);
+        },
+      });
   }
 
   useEffect(() => {
