@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import Flatpickr from 'react-flatpickr';
 import { SalesListContext } from '../Contexts/SalesListContext';
 import './flatpickr.css';
@@ -27,15 +27,35 @@ const flatPickrOptions = {
 function CalendarInput({ sale, value, placeholder }) {
   const { saveSalesToLocalStorage } = useContext(SalesListContext);
   const [date, setDate] = useState(sale[value]);
+  const calendarInput = useRef(null);
+
+  function addHighlight() {
+    const highlightedField = document.querySelector(
+      `#${calendarInput.current.node.id}`
+    );
+
+    highlightedField.classList.add('highlighted');
+
+    function removeClass() {
+      highlightedField.classList.remove('highlighted');
+      document.body.removeEventListener('click', removeClass);
+      document.body.removeEventListener('keydown', removeClass);
+    }
+    document.body.addEventListener('click', removeClass);
+    document.body.addEventListener('keydown', removeClass);
+  }
 
   return (
     <div className="col" style={colStyles}>
       <Flatpickr
+        id={`${value}_${sale.saleId}`}
+        ref={calendarInput}
         options={flatPickrOptions}
         placeholder={placeholder}
         style={inputStyles}
         value={date}
         onChange={(dateValue) => {
+          addHighlight();
           setDate(dateValue);
           sale[value] = dateValue;
           saveSalesToLocalStorage();

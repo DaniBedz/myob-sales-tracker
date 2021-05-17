@@ -67,7 +67,7 @@ code {
     background-color: #484848;
 }
 
-svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus {
+svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus, .highlighted {
   outline: none !important;
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }
