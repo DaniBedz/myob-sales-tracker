@@ -58,15 +58,15 @@ export function SalesListContextProvider(props) {
     window.localStorage.setItem('archivedSales', JSON.stringify(archivedSales));
   }, [archivedSales]);
 
-  function deleteSale(saleToDelete) {
-    const saleString = JSON.stringify(saleToDelete);
+  function manageSale(saleToManage) {
+    const saleString = JSON.stringify(saleToManage);
 
     function archiveSale() {
       setArchivedSales([...archivedSales, JSON.parse(saleString)]);
       saveArchivedSalesToLocalStorage();
       alertify.success('Archived');
 
-      setSales(sales.filter((sale) => sale.saleId !== saleToDelete.saleId));
+      setSales(sales.filter((sale) => sale.saleId !== saleToManage.saleId));
       document
         .querySelector('.archiveBtn')
         .removeEventListener('click', archiveSale);
@@ -83,9 +83,9 @@ export function SalesListContextProvider(props) {
     alertify
       .confirm(
         'Delete Sale',
-        `Are you sure? <button id="archive_${saleToDelete.saleId}" class="archiveBtn">Archive</button>`,
+        `Are you sure? <button id="archive_${saleToManage.saleId}" class="archiveBtn">Archive</button>`,
         () => {
-          setSales(sales.filter((sale) => sale.saleId !== saleToDelete.saleId));
+          setSales(sales.filter((sale) => sale.saleId !== saleToManage.saleId));
           saveSalesToLocalStorage();
           document
             .querySelector('.archiveBtn')
@@ -183,7 +183,7 @@ export function SalesListContextProvider(props) {
         setSales,
         addSale,
         saveSalesToLocalStorage,
-        deleteSale,
+        manageSale,
         archivedSales,
         toggleShowArchivedSales,
         setToggleShowArchivedSales,

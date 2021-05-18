@@ -19,7 +19,7 @@ const buttonStyles = {
 };
 
 function DeleteIcon({ sale }) {
-  const { deleteSale, toggleShowArchivedSales, manageArchivedSale } =
+  const { manageSale, toggleShowArchivedSales, manageArchivedSale } =
     useContext(SalesListContext);
 
   return (
@@ -30,13 +30,13 @@ function DeleteIcon({ sale }) {
         style={buttonStyles}
         onClick={() => {
           if (toggleShowArchivedSales === false) {
-            deleteSale(sale);
+            manageSale(sale);
           } else {
             manageArchivedSale(sale);
           }
         }}
         onKeyUp={(e) => {
-          if (e.code === 'Enter' || e.code === 'Space') deleteSale(sale);
+          if (e.code === 'Enter' || e.code === 'Space') manageSale(sale);
         }}
       >
         <svg
