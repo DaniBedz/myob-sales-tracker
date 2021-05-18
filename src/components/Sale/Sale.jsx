@@ -15,11 +15,12 @@ const divStyles = {
   borderBottom: '3px solid #343a40',
   borderLeft: '3px solid #343a40',
   borderRadius: '3px',
+  height: '8rem',
 };
 
 function Sale({ sale }) {
   return (
-    <div style={divStyles} className="row">
+    <div id={`item_${sale.saleId}`} style={divStyles} className="row">
       <TypeDropdown sale={sale} />
       <FieldInput sale={sale} value="company" placeholder="Company" />
       <FieldInput sale={sale} value="quoteId" placeholder="Quote ID" />

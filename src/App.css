@@ -84,11 +84,7 @@ svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #bt
   text-align: left !important;
   height: 6rem !important;
   text-align: left !important;
-  position: absolute;
-}
-
-.notes-input:hover, .notes-input:focus {
-  position: absolute;
+  padding: 0.5rem;
 }
 
 textarea {

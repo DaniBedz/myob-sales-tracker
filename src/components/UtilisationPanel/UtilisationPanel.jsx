@@ -9,20 +9,23 @@ const divStyle = {
   justifyContent: 'space-evenly',
   color: 'white',
   zIndex: '0',
+  position: 'relative',
 };
 
 function UtilisationPanel({ sale }) {
   return (
-    <div className="row" style={divStyle}>
-      <Utilisation sale={sale} type="subs" heading="Subs" />
-      <Utilisation sale={sale} type="bankFeed" heading="Bank Feed" />
-      <Utilisation sale={sale} type="cloudFile" heading="Cloud File" />
-      <Utilisation sale={sale} type="PDO" heading="PDO" />
-      <Utilisation sale={sale} type="OAQ" heading="OAQ" />
-      <Utilisation sale={sale} type="STP" heading="STP" />
-      <Utilisation sale={sale} type="offlineFile" heading="Offline File" />
-      <DeleteIcon sale={sale} />
-    </div>
+    <>
+      <div id={`util_${sale.saleId}`} className="row" style={divStyle}>
+        <Utilisation sale={sale} type="subs" heading="Subs" />
+        <Utilisation sale={sale} type="bankFeed" heading="Bank Feed" />
+        <Utilisation sale={sale} type="cloudFile" heading="Cloud File" />
+        <Utilisation sale={sale} type="PDO" heading="PDO" />
+        <Utilisation sale={sale} type="OAQ" heading="OAQ" />
+        <Utilisation sale={sale} type="STP" heading="STP" />
+        <Utilisation sale={sale} type="offlineFile" heading="Offline File" />
+        <DeleteIcon sale={sale} />
+      </div>
+    </>
   );
 }
 
