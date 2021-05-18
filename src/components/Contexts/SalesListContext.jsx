@@ -108,6 +108,61 @@ export function SalesListContextProvider(props) {
         },
       });
   }
+  function manageArchivedSale(archivedSale) {
+    const archivedSaleString = JSON.stringify(archivedSale);
+
+    function restoreArchivedSale() {
+      setSales([...sales, JSON.parse(archivedSaleString)]);
+      saveArchivedSalesToLocalStorage();
+      alertify.success('Restored from Archive');
+
+      setArchivedSales(
+        archivedSales.filter((sale) => sale.saleId !== archivedSale.saleId)
+      );
+      document
+        .querySelector('.archiveBtn')
+        .removeEventListener('click', restoreArchivedSale);
+      document.querySelector('.ajs-close').click();
+    }
+
+    function addRestoreFromArchiveBtnEvent() {
+      const archiveBtn = document.querySelector('.archiveBtn');
+      archiveBtn.addEventListener('click', restoreArchivedSale);
+    }
+
+    setTimeout(addRestoreFromArchiveBtnEvent, 1);
+
+    alertify
+      .confirm(
+        'Delete Sale',
+        `Are you sure? <button id="archive_${archivedSale.saleId}" class="archiveBtn archiveBtnRestore">Restore From Archive</button>`,
+        () => {
+          setArchivedSales(
+            archivedSales.filter((sale) => sale.saleId !== archivedSale.saleId)
+          );
+          saveArchivedSalesToLocalStorage();
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', restoreArchivedSale);
+          alertify.success('Deleted');
+        },
+        () => {
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', restoreArchivedSale);
+          alertify.error('Cancelled');
+        }
+      )
+      .set({
+        invokeOnCloseOff: false,
+        oncancel() {
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', restoreArchivedSale);
+        },
+      });
+  }
+
   function toggleArchivedSales() {
     setToggleShowArchivedSales(!toggleShowArchivedSales);
   }
@@ -133,6 +188,7 @@ export function SalesListContextProvider(props) {
         toggleShowArchivedSales,
         setToggleShowArchivedSales,
         toggleArchivedSales,
+        manageArchivedSale,
       }}
     >
       {children}

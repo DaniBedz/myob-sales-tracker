@@ -127,6 +127,11 @@
   right: -4rem;
   top: 3.7rem;
 }
+
+.archiveBtnRestore {
+  right: 1.7rem !important;
+
+}
 .archiveBtn:hover {
   background-color: #343a40;
 }
