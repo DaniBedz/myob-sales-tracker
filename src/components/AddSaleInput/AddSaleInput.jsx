@@ -26,16 +26,17 @@ const plusButtonStyles = {
   marginRight: '2px',
 };
 
-const divStyles = {
-  margin: '1.5rem 1.5rem 1rem 1rem',
-  width: '100%',
-  display: 'flex',
-  zIndex: '1',
-};
+function AddSaleInput({ visibility }) {
+  const divStyles = {
+    margin: '1.5rem 1.5rem 1rem 1rem',
+    width: '100%',
+    zIndex: '1',
+    display: 'flex',
+    visibility,
+  };
 
-function AddSaleInput() {
-  const { addSale } = useContext(SalesListContext);
   const [newSaleText, setNewSaleText] = useState('');
+  const { addSale } = useContext(SalesListContext);
 
   function handleChange(event) {
     setNewSaleText(event.target.value);

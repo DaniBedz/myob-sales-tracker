@@ -1,6 +1,9 @@
-import React from 'react';
+/* eslint-disable no-return-assign */
+import React, { useContext } from 'react';
 import AddSaleInput from '../AddSaleInput/AddSaleInput';
 import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
+import ArchiveButton from '../ArchiveButton/ArchiveButton';
+import { SalesListContext } from '../Contexts/SalesListContext';
 import '../../fonts/NeutroMYOB-Medium.woff2';
 
 const containerStyle = {
@@ -28,6 +31,8 @@ const titleStyle = {
 };
 
 function Header() {
+  const { toggleShowArchivedSales } = useContext(SalesListContext);
+
   return (
     <div style={containerStyle}>
       <div className="row">
@@ -69,7 +74,10 @@ function Header() {
           </span>
         </div>
         <div className="col-4 d-flex justify-content-end align-items-start">
-          <AddSaleInput />
+          <ArchiveButton />
+          <AddSaleInput
+            visibility={toggleShowArchivedSales ? 'hidden' : 'visible'}
+          />
         </div>
       </div>
       <ColumnHeaders />

@@ -7,10 +7,13 @@ const divStyle = {
 };
 
 function SaleList() {
-  const { sales } = useContext(SalesListContext);
+  const { sales, archivedSales, toggleShowArchivedSales } =
+    useContext(SalesListContext);
+  const items = toggleShowArchivedSales === false ? sales : archivedSales;
+
   return (
     <div style={divStyle}>
-      {sales.map((sale) => {
+      {items.map((sale) => {
         return <Sale sale={sale} key={sale.saleId} />;
       })}
     </div>

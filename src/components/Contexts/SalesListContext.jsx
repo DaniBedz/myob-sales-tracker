@@ -17,6 +17,8 @@ export function SalesListContextProvider(props) {
     JSON.parse(window.localStorage.getItem('archivedSales')) || []
   );
 
+  const [toggleShowArchivedSales, setToggleShowArchivedSales] = useState(false);
+
   function addSale(company) {
     const newSaleTemplate = {
       saleId: uuid(),
@@ -106,6 +108,9 @@ export function SalesListContextProvider(props) {
         },
       });
   }
+  function toggleArchivedSales() {
+    setToggleShowArchivedSales(!toggleShowArchivedSales);
+  }
 
   useEffect(() => {
     saveSalesToLocalStorage();
@@ -124,6 +129,10 @@ export function SalesListContextProvider(props) {
         addSale,
         saveSalesToLocalStorage,
         deleteSale,
+        archivedSales,
+        toggleShowArchivedSales,
+        setToggleShowArchivedSales,
+        toggleArchivedSales,
       }}
     >
       {children}
