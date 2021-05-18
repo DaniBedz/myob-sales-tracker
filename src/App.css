@@ -67,7 +67,7 @@ code {
     background-color: #484848;
 }
 
-svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus, .highlighted, .notes-input:focus {
+svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus, .highlighted, .notes-input:focus, .dropdown-toggle.btn.btn-primary:focus, .show-archive-btn:focus {
   outline: none !important;
   box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
 }
@@ -81,10 +81,20 @@ svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #bt
 }
 
 .notes-input:hover, .notes-input:focus {
+  text-align: left !important;
   height: 6rem !important;
   text-align: left !important;
+  position: absolute;
+}
+
+.notes-input:hover, .notes-input:focus {
+  position: absolute;
 }
 
 textarea {
   resize: none;
+}
+
+.show-archive-btn:hover {
+  background-color: #343a40 !important;
 }
