@@ -21,14 +21,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest",
       "airbnb",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
+      "plugin: cypress/recommended"
     ],
     "plugins": [
       "prettier"
@@ -63,11 +66,14 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
     "babel-eslint": "^10.1.0",
+    "cypress": "^7.3.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-config-wesbos": "^1.0.1",
+    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-html": "^6.1.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
