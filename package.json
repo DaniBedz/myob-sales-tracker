@@ -31,7 +31,7 @@
       "react-app/jest",
       "airbnb",
       "plugin:prettier/recommended",
-      "plugin: cypress/recommended"
+      "plugin:cypress/recommended"
     ],
     "plugins": [
       "prettier"
@@ -80,6 +80,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "faker": "5.5.3",
     "patch-package": "^6.4.7",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.3.0"
