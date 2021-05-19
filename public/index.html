@@ -16,6 +16,12 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>myob Sales Tracker</title>
+    <script>
+      if (window.Cypress) {
+        console.log('Cypress window');
+        window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
