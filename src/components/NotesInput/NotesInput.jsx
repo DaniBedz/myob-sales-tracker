@@ -33,12 +33,9 @@ function NotesInput({ sale }) {
 
   function isClickedFalse() {
     isClicked = false;
-    // document.body.removeEventListener('click', isClickedFalse);
-    // isClicked = false;
   }
   function isClickedTrue() {
     isClicked = true;
-    // isClicked = true;
   }
 
   function handleHover() {
