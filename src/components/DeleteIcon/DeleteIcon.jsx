@@ -36,7 +36,13 @@ function DeleteIcon({ sale }) {
           }
         }}
         onKeyUp={(e) => {
-          if (e.code === 'Enter' || e.code === 'Space') manageSale(sale);
+          if (e.code === 'Enter' || e.code === 'Space') {
+            if (toggleShowArchivedSales === false) {
+              manageSale(sale);
+            } else {
+              manageArchivedSale(sale);
+            }
+          }
         }}
       >
         <svg
