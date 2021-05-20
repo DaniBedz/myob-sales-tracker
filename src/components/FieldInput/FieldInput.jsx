@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { SalesListContext } from '../Contexts/SalesListContext';
 
 const inputStyles = {
@@ -16,14 +16,25 @@ const colStyles = {
 };
 
 function FieldInput({ sale, value, placeholder }) {
-  const { saveSalesToLocalStorage } = useContext(SalesListContext);
+  const { saveSalesToLocalStorage, sales, setSales } =
+    useContext(SalesListContext);
   const [inputValue, setInputValue] = useState(sale[value]);
 
   function handleChange(input) {
     setInputValue(input);
     sale[value] = input;
-    saveSalesToLocalStorage();
+    setSales((prev) => {
+      const previousMinusCurrent = prev.filter(
+        (item) => item.saleId !== sale.saleId
+      );
+      const newSaleObj = [sale, ...previousMinusCurrent];
+      return newSaleObj.sort((a, b) => a.order - b.order);
+    });
   }
+
+  useEffect(() => {
+    saveSalesToLocalStorage();
+  }, [sales, saveSalesToLocalStorage]);
 
   return (
     <div className="col" style={colStyles}>

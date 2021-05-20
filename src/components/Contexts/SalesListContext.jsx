@@ -19,9 +19,20 @@ export function SalesListContextProvider(props) {
 
   const [toggleShowArchivedSales, setToggleShowArchivedSales] = useState(false);
 
+  function getNewOrderValue() {
+    let highest = 0;
+    sales.forEach((sale) => {
+      if (sale.order > highest) {
+        highest = sale.order;
+      }
+    });
+    return highest + 1;
+  }
+
   function addSale(company) {
     const newSaleTemplate = {
       saleId: uuid(),
+      order: getNewOrderValue(),
       type: 'None',
       company,
       quoteId: '',
@@ -85,8 +96,9 @@ export function SalesListContextProvider(props) {
         'Delete Sale',
         `Are you sure? <button id="archive_${saleToManage.saleId}" class="archiveBtn">Archive</button>`,
         () => {
-          setSales(sales.filter((sale) => sale.saleId !== saleToManage.saleId));
-          saveSalesToLocalStorage();
+          setSales((prevSales) =>
+            prevSales.filter((sale) => sale.saleId !== saleToManage.saleId)
+          );
           document
             .querySelector('.archiveBtn')
             .removeEventListener('click', archiveSale);
@@ -108,6 +120,7 @@ export function SalesListContextProvider(props) {
         },
       });
   }
+
   function manageArchivedSale(archivedSale) {
     const archivedSaleString = JSON.stringify(archivedSale);
 
@@ -137,10 +150,9 @@ export function SalesListContextProvider(props) {
         'Delete Sale',
         `Are you sure? <button id="archive_${archivedSale.saleId}" class="archiveBtn archiveBtnRestore">Restore From Archive</button>`,
         () => {
-          setArchivedSales(
-            archivedSales.filter((sale) => sale.saleId !== archivedSale.saleId)
+          setArchivedSales((prevSales) =>
+            prevSales.filter((sale) => sale.saleId !== archivedSale.saleId)
           );
-          saveArchivedSalesToLocalStorage();
           document
             .querySelector('.archiveBtn')
             .removeEventListener('click', restoreArchivedSale);
