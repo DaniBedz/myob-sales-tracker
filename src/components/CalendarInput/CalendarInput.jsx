@@ -27,7 +27,7 @@ const flatPickrOptions = {
 function CalendarInput({ sale, value, placeholder }) {
   const { saveSalesToLocalStorage } = useContext(SalesListContext);
   const [date, setDate] = useState(sale[value]);
-  const calendarInput = useRef(null);
+  const calendarInput = useRef();
 
   function addHighlight() {
     const highlightedField = document.querySelector(
