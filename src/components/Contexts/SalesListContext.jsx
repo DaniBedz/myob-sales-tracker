@@ -179,6 +179,22 @@ export function SalesListContextProvider(props) {
     setToggleShowArchivedSales(!toggleShowArchivedSales);
   }
 
+  function handleChange(input, propName, sale) {
+    function reduce(prev) {
+      sale[propName] = input;
+      const previousMinusCurrent = prev.filter(
+        (item) => item.saleId !== sale.saleId
+      );
+      const newSalesObj = [...previousMinusCurrent, sale];
+      return newSalesObj.sort((a, b) => a.order - b.order);
+    }
+    if (!toggleShowArchivedSales) {
+      setSales((prev) => reduce(prev));
+    } else {
+      setArchivedSales((prev) => reduce(prev));
+    }
+  }
+
   useEffect(() => {
     saveSalesToLocalStorage();
   }, [sales, saveSalesToLocalStorage]);
@@ -201,6 +217,7 @@ export function SalesListContextProvider(props) {
         setToggleShowArchivedSales,
         toggleArchivedSales,
         manageArchivedSale,
+        handleChange,
       }}
     >
       {children}

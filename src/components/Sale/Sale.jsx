@@ -22,19 +22,19 @@ function Sale({ sale }) {
   return (
     <div id={`item_${sale.saleId}`} style={divStyles} className="row">
       <TypeDropdown sale={sale} />
-      <FieldInput sale={sale} value="company" placeholder="Company" />
-      <FieldInput sale={sale} value="quoteId" placeholder="Quote ID" />
-      <FieldInput sale={sale} value="email" placeholder="Email" />
-      <FieldInput sale={sale} value="clientId" placeholder="Client ID" />
+      <FieldInput sale={sale} propName="company" placeholder="Company" />
+      <FieldInput sale={sale} propName="quoteId" placeholder="Quote ID" />
+      <FieldInput sale={sale} propName="email" placeholder="Email" />
+      <FieldInput sale={sale} propName="clientId" placeholder="Client ID" />
       <CalendarInput
         sale={sale}
-        value="quoteExpiry"
+        propName="quoteExpiry"
         placeholder="Quote Expiry"
       />
-      <CalendarInput sale={sale} value="saleDate" placeholder="Sale Date" />
+      <CalendarInput sale={sale} propName="saleDate" placeholder="Sale Date" />
       <FieldInput
         sale={sale}
-        value="potentialSales"
+        propName="potentialSales"
         placeholder="Potential Sales"
       />
       <NotesInput sale={sale} />

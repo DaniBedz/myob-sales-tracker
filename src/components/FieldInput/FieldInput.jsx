@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { SalesListContext } from '../Contexts/SalesListContext';
 
 const inputStyles = {
@@ -15,35 +15,21 @@ const colStyles = {
   zIndex: '1',
 };
 
-function FieldInput({ sale, value, placeholder }) {
-  const { saveSalesToLocalStorage, sales, setSales } =
-    useContext(SalesListContext);
-  const [inputValue, setInputValue] = useState(sale[value]);
-
-  function handleChange(input) {
-    setInputValue(input);
-    sale[value] = input;
-    setSales((prev) => {
-      const previousMinusCurrent = prev.filter(
-        (item) => item.saleId !== sale.saleId
-      );
-      const newSaleObj = [sale, ...previousMinusCurrent];
-      return newSaleObj.sort((a, b) => a.order - b.order);
-    });
-  }
-
-  useEffect(() => {
-    saveSalesToLocalStorage();
-  }, [sales, saveSalesToLocalStorage]);
+function FieldInput({ sale, propName, placeholder }) {
+  const { handleChange } = useContext(SalesListContext);
+  const [inputValue, setInputValue] = useState(sale[propName]);
 
   return (
     <div className="col" style={colStyles}>
       <input
-        id={`${value}_${sale.saleId}`}
+        id={`${propName}_${sale.saleId}`}
         style={inputStyles}
         type="text"
         placeholder={placeholder}
-        onChange={(event) => handleChange(event.target.value)}
+        onChange={(event) => {
+          setInputValue(event.target.value);
+          handleChange(event.target.value, propName, sale);
+        }}
         value={inputValue}
       />
     </div>

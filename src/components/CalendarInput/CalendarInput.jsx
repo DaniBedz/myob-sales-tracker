@@ -24,9 +24,9 @@ const flatPickrOptions = {
   disableMobile: true,
 };
 
-function CalendarInput({ sale, value, placeholder }) {
-  const { saveSalesToLocalStorage } = useContext(SalesListContext);
-  const [date, setDate] = useState(sale[value]);
+function CalendarInput({ sale, propName, placeholder }) {
+  const { handleChange } = useContext(SalesListContext);
+  const [date, setDate] = useState(sale[propName]);
   const calendarInput = useRef();
 
   function addHighlight() {
@@ -48,7 +48,7 @@ function CalendarInput({ sale, value, placeholder }) {
   return (
     <div className="col" style={colStyles}>
       <Flatpickr
-        id={`${value}_${sale.saleId}`}
+        id={`${propName}_${sale.saleId}`}
         ref={calendarInput}
         options={flatPickrOptions}
         placeholder={placeholder}
@@ -57,8 +57,7 @@ function CalendarInput({ sale, value, placeholder }) {
         onChange={(dateValue) => {
           addHighlight();
           setDate(dateValue);
-          sale[value] = dateValue;
-          saveSalesToLocalStorage();
+          handleChange(dateValue, propName, sale);
         }}
       />
     </div>

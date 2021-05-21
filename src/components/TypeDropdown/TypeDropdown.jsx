@@ -20,13 +20,13 @@ const buttonStyle = {
 };
 
 function TypeDropdown({ sale }) {
-  const { saveSalesToLocalStorage } = useContext(SalesListContext);
+  const { handleChange } = useContext(SalesListContext);
   const [input, setInput] = useState(sale.type);
 
   function saveValue(selectedValue) {
     setInput(selectedValue);
     sale.type = selectedValue;
-    saveSalesToLocalStorage();
+    handleChange(selectedValue, 'type', sale);
   }
 
   return (
