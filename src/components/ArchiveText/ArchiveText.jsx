@@ -1,18 +1,18 @@
 import React from 'react';
 
 const pStyles = {
+  display: 'none',
   color: 'orange',
-  margin: '1.5rem 1.5rem 1rem 1rem',
+  marginTop: '0.75rem',
   textAlign: 'center',
-  fontSize: '1.5rem',
+  fontSize: '2.5rem',
   position: 'absolute',
-  right: '6rem',
-  top: '0.3rem',
+  right: '5.5rem',
 };
 
 function ArchiveText() {
   return (
-    <p className="align-self-start" style={pStyles}>
+    <p className="align-self-start d-sm-flex" style={pStyles}>
       [ Archive ]
     </p>
   );
