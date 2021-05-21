@@ -12,6 +12,7 @@ const buttonStyles = {
   width: '10rem',
   height: '2.93rem',
   top: '1.5rem',
+  whiteSpace: 'nowrap',
 };
 
 function ArchiveButton() {
