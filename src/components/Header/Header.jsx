@@ -15,19 +15,27 @@ const containerStyle = {
 };
 
 const logoStyle = {
+  display: 'none',
   width: '8rem',
-  marginTop: '0.5rem',
-  marginLeft: '2rem',
+  margin: '1.5rem',
 };
 
 const titleStyle = {
-  position: 'relative',
+  position: 'absolute',
+  display: 'inline-flex',
   fontSize: '3rem',
-  top: '0.9rem',
-  left: '2rem',
+  top: '0.7rem',
+  left: '11rem',
   fontFamily: 'NeutroMYOB-Medium',
   color: 'dimgrey',
   userSelect: 'none',
+  whiteSpace: 'nowrap',
+};
+
+const rightSide = {
+  display: 'contents',
+  justifyContent: 'end',
+  alignItems: 'start',
 };
 
 function Header() {
@@ -36,9 +44,10 @@ function Header() {
   return (
     <div style={containerStyle}>
       <div className="row">
-        <div className="col-8">
+        <div className="col" style={{ display: 'block-ruby' }}>
           <svg
             id="myob-logo"
+            className="d-sm-flex"
             style={logoStyle}
             preserveAspectRatio="xMidYMin slice"
             data-name="img_mega-nav_myob-logo"
@@ -69,11 +78,11 @@ function Header() {
               <path d="M236.6,57.7c0-9.7,7-17.5,15.6-17.5 c8.6,0,15.6,7.6,15.6,17.5c0,9.7-7,17.1-15.6,17.1C243.6,74.9,236.6,67.2,236.6,57.7 M233.4,0L233.4,0 c-10.6,0-12.3,7.2-12.5,10.6V88l7.5,0c6,0.1,7.4-3.7,7.5-5.9v-0.3v-0.3c4.7,5,11.2,7.8,18.6,7.8c16,0,29-13.7,29-31.7 c0-18.1-13-31.8-29-31.8c-7,0-13.2,2.6-17.9,7.1V0H233.4z" />
             </g>
           </svg>
-          <span id="title" style={titleStyle}>
+          <p id="title" style={titleStyle} className="d-none d-xl-inline">
             Sale Tracker
-          </span>
+          </p>
         </div>
-        <div className="col-4 d-flex justify-content-end align-items-start">
+        <div style={rightSide}>
           <ArchiveButton />
           <AddSaleInput
             visibility={toggleShowArchivedSales ? 'hidden' : 'visible'}

@@ -9,7 +9,6 @@ const inputStyles = {
   outline: 'none',
   paddingLeft: '1.5rem',
   height: '2.8rem',
-  width: '100%',
 };
 
 const plusButtonStyles = {
@@ -29,7 +28,6 @@ const plusButtonStyles = {
 function AddSaleInput({ visibility }) {
   const divStyles = {
     margin: '1.5rem 1.5rem 1rem 1rem',
-    width: '100%',
     zIndex: '1',
     display: 'flex',
     visibility,
