@@ -46,7 +46,7 @@ function Header() {
         <div className="col" style={{ display: 'block-ruby' }}>
           <svg
             id="myob-logo"
-            className="d-sm-flex"
+            className="d-md-flex"
             style={logoStyle}
             preserveAspectRatio="xMidYMin slice"
             data-name="img_mega-nav_myob-logo"
