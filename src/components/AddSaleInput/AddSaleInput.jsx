@@ -29,7 +29,6 @@ function AddSaleInput({ visibility }) {
   const divStyles = {
     margin: '1.5rem 1.5rem 1rem 1rem',
     zIndex: '1',
-    display: 'flex',
     visibility,
   };
 
