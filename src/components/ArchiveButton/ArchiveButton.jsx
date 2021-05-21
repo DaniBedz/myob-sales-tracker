@@ -16,7 +16,7 @@ const buttonStyles = {
 };
 
 function ArchiveButton() {
-  const { toggleShowArchivedSales, toggleArchivedSales } =
+  const { toggleShowArchivedSales, toggleArchivedSales, sales, archivedSales } =
     useContext(SalesListContext);
   return (
     <button
@@ -25,7 +25,9 @@ function ArchiveButton() {
       type="button"
       onClick={toggleArchivedSales}
     >
-      {toggleShowArchivedSales ? 'View Sales' : 'View Archive'}
+      {toggleShowArchivedSales
+        ? `View Sales (${sales.length})`
+        : `View Archive (${archivedSales.length})`}
     </button>
   );
 }
