@@ -1,4 +1,3 @@
-/* eslint-disable no-return-assign */
 import React, { useContext } from 'react';
 import AddSaleInput from '../AddSaleInput/AddSaleInput';
 import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
