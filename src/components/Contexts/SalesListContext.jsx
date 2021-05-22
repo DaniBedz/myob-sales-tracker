@@ -1,3 +1,4 @@
+/* eslint-disable react/no-this-in-sfc */
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import * as alertify from 'alertifyjs';
@@ -40,15 +41,15 @@ export function SalesListContextProvider(props) {
       clientId: '',
       quoteExpiry: '',
       saleDate: '',
-      potentialSales: '',
-      Notes: '',
+      notes: '',
+      potentialSales: 0,
       utilisations: {
         subs: 0,
         bankFeed: 0,
         cloudFile: 0,
         PDO: 0,
         OAQ: 0,
-        STP: 0,
+        payroll: 0,
         offlineFile: 0,
       },
     };
@@ -179,6 +180,19 @@ export function SalesListContextProvider(props) {
     setToggleShowArchivedSales(!toggleShowArchivedSales);
   }
 
+  function calculatePotentialSales(sale) {
+    return (
+      sale.utilisations.subs +
+      sale.utilisations.PDO +
+      (sale.utilisations.bankFeed +
+        sale.utilisations.cloudFile +
+        sale.utilisations.OAQ +
+        sale.utilisations.offlineFile) *
+        0.25 +
+      sale.utilisations.payroll * 0.5
+    );
+  }
+
   function handleChange(input, propName, sale) {
     function reduce(prev) {
       sale[propName] = input;
@@ -218,6 +232,7 @@ export function SalesListContextProvider(props) {
         toggleArchivedSales,
         manageArchivedSale,
         handleChange,
+        calculatePotentialSales,
       }}
     >
       {children}

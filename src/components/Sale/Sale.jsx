@@ -4,6 +4,7 @@ import FieldInput from '../FieldInput/FieldInput';
 import CalendarInput from '../CalendarInput/CalendarInput';
 import TypeDropdown from '../TypeDropdown/TypeDropdown';
 import NotesInput from '../NotesInput/NotesInput';
+import PotentialSales from '../PotentialSales/PotentialSales';
 
 const divStyles = {
   backgroundColor: '#565656',
@@ -32,11 +33,7 @@ function Sale({ sale }) {
         placeholder="Quote Expiry"
       />
       <CalendarInput sale={sale} propName="saleDate" placeholder="Sale Date" />
-      <FieldInput
-        sale={sale}
-        propName="potentialSales"
-        placeholder="Potential Sales"
-      />
+      <PotentialSales sale={sale} />
       <NotesInput sale={sale} />
       <UtilisationPanel sale={sale} />
     </div>
