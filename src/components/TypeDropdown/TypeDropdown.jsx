@@ -17,7 +17,16 @@ function dynamicTypeValue(sale) {
   if (sale.potentialSales === 0 && sale.quoteId !== '') {
     typeValue = 'Quote';
   }
+  if (sale.utilisations.subs !== 0) {
+    typeValue = 'Quote';
+  }
   if (sale.potentialSales !== 0 && sale.quoteId !== '') {
+    typeValue = 'Both';
+  }
+  if (
+    sale.utilisations.sub !== 0 &&
+    Object.values(sale.utilisations).reduce((prev, curr) => prev + curr) > 1
+  ) {
     typeValue = 'Both';
   }
   return typeValue;
