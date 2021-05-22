@@ -1,63 +1,33 @@
-import React, { useState, useContext } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import { SalesListContext } from '../Contexts/SalesListContext';
-
-const dropDownStyle = {
-  margin: '2px',
-  width: '100%',
-  color: 'white',
-  textAlign: 'center',
-};
-
-const menuStyle = {
-  backgroundColor: '#565656',
-};
+import React from 'react';
 
 const buttonStyle = {
   color: 'white',
   width: '100%',
-  height: '1.91rem',
+  textAlign: 'center',
 };
 
-function TypeDropdown({ sale }) {
-  const { handleChange } = useContext(SalesListContext);
-  const [input, setInput] = useState(sale.type);
-
-  function saveValue(selectedValue) {
-    setInput(selectedValue);
-    sale.type = selectedValue;
-    handleChange(selectedValue, 'type', sale);
+function dynamicTypeValue(sale) {
+  let typeValue;
+  if (sale.potentialSales === 0 && sale.quoteId === '') {
+    typeValue = 'None';
   }
+  if (sale.potentialSales !== 0 && sale.quoteId === '') {
+    typeValue = 'Utilisation';
+  }
+  if (sale.potentialSales === 0 && sale.quoteId !== '') {
+    typeValue = 'Quote';
+  }
+  if (sale.potentialSales !== 0 && sale.quoteId !== '') {
+    typeValue = 'Both';
+  }
+  return typeValue;
+}
 
+function TypeDropdown({ sale }) {
   return (
-    <Dropdown className="col" style={dropDownStyle}>
-      <Dropdown.Toggle style={buttonStyle} id={`type_${sale.saleId}`}>
-        {input}
-      </Dropdown.Toggle>
-      <Dropdown.Menu style={menuStyle}>
-        <Dropdown.Item
-          style={buttonStyle}
-          onSelect={(value) => saveValue(value)}
-          eventKey="None"
-        >
-          None
-        </Dropdown.Item>
-        <Dropdown.Item
-          style={buttonStyle}
-          onSelect={(value) => saveValue(value)}
-          eventKey="Quote"
-        >
-          Quote
-        </Dropdown.Item>
-        <Dropdown.Item
-          style={buttonStyle}
-          onSelect={(value) => saveValue(value)}
-          eventKey="Utilisation"
-        >
-          Utilisation
-        </Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <div className="col" style={buttonStyle}>
+      {dynamicTypeValue(sale)}
+    </div>
   );
 }
 

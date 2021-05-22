@@ -3,23 +3,29 @@ import { SalesListContext } from '../Contexts/SalesListContext';
 import './Stepper.css';
 
 function Stepper({ utilisation, sale, type }) {
-  const { saveSalesToLocalStorage, calculatePotentialSales, handleChange } =
+  const { calculatePotentialSales, handleChange } =
     useContext(SalesListContext);
   const [number, setNumber] = useState(utilisation);
 
   function increment() {
     setNumber((prevNumber) => (prevNumber += 1));
     handleChange(sale.utilisations[type]++, type, sale);
-    handleChange(calculatePotentialSales(sale), 'potentialSales', sale);
-    saveSalesToLocalStorage();
+    handleChange(
+      calculatePotentialSales(sale.utilisations),
+      'potentialSales',
+      sale
+    );
   }
 
   function decrement() {
     if (number === 0) return;
     setNumber((prevNumber) => (prevNumber -= 1));
     handleChange(sale.utilisations[type]--, type, sale);
-    handleChange(calculatePotentialSales(sale), 'potentialSales', sale);
-    saveSalesToLocalStorage();
+    handleChange(
+      calculatePotentialSales(sale.utilisations),
+      'potentialSales',
+      sale
+    );
   }
 
   return (
