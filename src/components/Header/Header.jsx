@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import AddSaleInput from '../AddSaleInput/AddSaleInput';
 import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
 import ArchiveButton from '../ArchiveButton/ArchiveButton';
+import ArchiveText from '../ArchiveIcon/ArchiveIcon';
 import { SalesListContext } from '../Contexts/SalesListContext';
 import '../../fonts/NeutroMYOB-Medium.woff2';
 
@@ -42,8 +43,8 @@ function Header() {
 
   return (
     <div style={containerStyle}>
-      <div className="row">
-        <div className="col" style={{ display: 'block-ruby' }}>
+      <div className="row" style={{ marginBottom: '-1rem' }}>
+        <div className="col">
           <svg
             id="myob-logo"
             className="d-md-flex"
@@ -86,6 +87,7 @@ function Header() {
           <AddSaleInput
             visibility={toggleShowArchivedSales ? 'hidden' : 'visible'}
           />
+          {toggleShowArchivedSales ? <ArchiveText /> : ''}
         </div>
       </div>
       <ColumnHeaders />

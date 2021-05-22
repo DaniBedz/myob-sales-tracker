@@ -26,14 +26,16 @@ const plusButtonStyles = {
 };
 
 function AddSaleInput({ visibility }) {
+  const [newSaleText, setNewSaleText] = useState('');
+  const { addSale, toggleShowArchivedSales } = useContext(SalesListContext);
+
   const divStyles = {
     margin: '1.5rem 1.5rem 1rem 1rem',
     zIndex: '1',
     visibility,
+    position: 'relative',
+    left: `${toggleShowArchivedSales ? '1.5rem' : ''}`,
   };
-
-  const [newSaleText, setNewSaleText] = useState('');
-  const { addSale } = useContext(SalesListContext);
 
   function handleChange(event) {
     setNewSaleText(event.target.value);

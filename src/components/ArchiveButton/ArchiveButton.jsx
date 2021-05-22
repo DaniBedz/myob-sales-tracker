@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import ArchiveText from '../ArchiveText/ArchiveText';
 import { SalesListContext } from '../Contexts/SalesListContext';
 
 function ArchiveButton() {
@@ -32,7 +31,6 @@ function ArchiveButton() {
           ? `View Sales (${sales.length})`
           : `View Archive (${archivedSales.length})`}
       </button>
-      {toggleShowArchivedSales ? <ArchiveText /> : ''}
     </>
   );
 }
