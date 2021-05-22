@@ -7,6 +7,10 @@ const buttonStyle = {
 };
 
 function dynamicTypeValue(sale) {
+  const numberOfUtilisations =
+    Object.values(sale.utilisations).reduce((prev, curr) => prev + curr) -
+    sale.utilisations.subs;
+
   let typeValue;
   if (sale.potentialSales === 0 && sale.quoteId === '') {
     typeValue = 'None';
@@ -14,18 +18,15 @@ function dynamicTypeValue(sale) {
   if (sale.potentialSales !== 0 && sale.quoteId === '') {
     typeValue = 'Utilisation';
   }
-  if (sale.potentialSales === 0 && sale.quoteId !== '') {
+  if (
+    sale.utilisations.subs !== 0 ||
+    (sale.potentialSales === 0 && sale.quoteId !== '')
+  ) {
     typeValue = 'Quote';
-  }
-  if (sale.utilisations.subs !== 0) {
-    typeValue = 'Quote';
-  }
-  if (sale.potentialSales !== 0 && sale.quoteId !== '') {
-    typeValue = 'Both';
   }
   if (
-    sale.utilisations.sub !== 0 &&
-    Object.values(sale.utilisations).reduce((prev, curr) => prev + curr) > 1
+    (sale.potentialSales !== 0 && sale.quoteId !== '') ||
+    (sale.utilisations.subs !== 0 && numberOfUtilisations > 0)
   ) {
     typeValue = 'Both';
   }
