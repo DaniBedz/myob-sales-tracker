@@ -1,4 +1,3 @@
-/* eslint-disable react/no-this-in-sfc */
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { v4 as uuid } from 'uuid';
 import * as alertify from 'alertifyjs';
@@ -34,7 +33,6 @@ export function SalesListContextProvider(props) {
     const newSaleTemplate = {
       saleId: uuid(),
       order: getNewOrderValue(),
-      type: 'None',
       company,
       quoteId: '',
       email: '',
@@ -180,16 +178,16 @@ export function SalesListContextProvider(props) {
     setToggleShowArchivedSales(!toggleShowArchivedSales);
   }
 
-  function calculatePotentialSales(sale) {
+  function calculatePotentialSales(utilisations) {
     return (
-      sale.utilisations.subs +
-      sale.utilisations.PDO +
-      (sale.utilisations.bankFeed +
-        sale.utilisations.cloudFile +
-        sale.utilisations.OAQ +
-        sale.utilisations.offlineFile) *
+      utilisations.subs +
+      utilisations.PDO +
+      (utilisations.bankFeed +
+        utilisations.cloudFile +
+        utilisations.OAQ +
+        utilisations.offlineFile) *
         0.25 +
-      sale.utilisations.payroll * 0.5
+      utilisations.payroll * 0.5
     );
   }
 
