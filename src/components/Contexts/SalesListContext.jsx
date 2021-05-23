@@ -19,20 +19,9 @@ export function SalesListContextProvider(props) {
 
   const [toggleShowArchivedSales, setToggleShowArchivedSales] = useState(false);
 
-  function getNewOrderValue() {
-    let highest = 0;
-    sales.forEach((sale) => {
-      if (sale.order > highest) {
-        highest = sale.order;
-      }
-    });
-    return highest + 1;
-  }
-
   function addSale(company) {
     const newSaleTemplate = {
       saleId: uuid(),
-      order: getNewOrderValue(),
       company,
       quoteId: '',
       email: '',
@@ -225,6 +214,7 @@ export function SalesListContextProvider(props) {
         saveSalesToLocalStorage,
         manageSale,
         archivedSales,
+        setArchivedSales,
         toggleShowArchivedSales,
         setToggleShowArchivedSales,
         toggleArchivedSales,
