@@ -19,8 +19,89 @@ const buttonStyles = {
 };
 
 function DeleteIcon({ sale }) {
-  const { manageSale, toggleShowArchivedSales, manageArchivedSale } =
-    useContext(SalesListContext);
+  const {
+    sales,
+    setSales,
+    archivedSales,
+    setArchivedSales,
+    alertify,
+    toggleShowArchivedSales,
+  } = useContext(SalesListContext);
+
+  function archiveSale(saleToArchive) {
+    setArchivedSales([
+      ...archivedSales,
+      JSON.parse(JSON.stringify(saleToArchive)),
+    ]);
+    alertify.success('Archived');
+
+    setSales(sales.filter((item) => item.saleId !== saleToArchive.saleId));
+    document
+      .querySelector('.archiveBtn')
+      .removeEventListener('click', () => archiveSale(saleToArchive));
+    document.querySelector('.ajs-close').click();
+  }
+
+  function restoreArchivedSale(archivedSale) {
+    const archivedSaleString = JSON.stringify(archivedSale);
+    setSales([...sales, JSON.parse(archivedSaleString)]);
+    alertify.success('Restored from Archive');
+
+    setArchivedSales(
+      archivedSales.filter((item) => item.saleId !== archivedSale.saleId)
+    );
+    document
+      .querySelector('.archiveBtn')
+      .removeEventListener('click', () => restoreArchivedSale(archivedSale));
+    document.querySelector('.ajs-close').click();
+  }
+
+  function manageItem(itemToManage) {
+    const archiveOrRestore = !toggleShowArchivedSales
+      ? archiveSale
+      : restoreArchivedSale;
+
+    function addBtnEvent() {
+      document
+        .querySelector('.archiveBtn')
+        .addEventListener('click', () => archiveOrRestore(itemToManage));
+    }
+
+    setTimeout(addBtnEvent, 1);
+
+    alertify
+      .confirm(
+        'Delete Sale',
+        !toggleShowArchivedSales
+          ? `Are you sure? <button id="archive_${itemToManage.saleId}" class="archiveBtn">Archive</button>`
+          : `Are you sure? <button id="archive_${itemToManage.saleId}" class="archiveBtn archiveBtnRestore">Restore From Archive</button>`,
+        () => {
+          const setter = !toggleShowArchivedSales ? setSales : setArchivedSales;
+          setter((prevItems) =>
+            prevItems.filter((item) => item.saleId !== itemToManage.saleId)
+          );
+
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', () => archiveOrRestore(itemToManage));
+          alertify.success('Deleted');
+        },
+        () => {
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', () => archiveOrRestore(itemToManage));
+          alertify.error('Cancelled');
+        }
+      )
+      .set({
+        invokeOnCloseOff: false,
+        oncancel() {
+          document
+            .querySelector('.archiveBtn')
+            .removeEventListener('click', () => archiveOrRestore(itemToManage));
+        },
+      });
+  }
 
   return (
     <div className="col-2" style={deleteIconStyles}>
@@ -29,19 +110,11 @@ function DeleteIcon({ sale }) {
         className="deleteBtn"
         style={buttonStyles}
         onClick={() => {
-          if (toggleShowArchivedSales === false) {
-            manageSale(sale);
-          } else {
-            manageArchivedSale(sale);
-          }
+          manageItem(sale);
         }}
         onKeyUp={(e) => {
           if (e.code === 'Enter' || e.code === 'Space') {
-            if (toggleShowArchivedSales === false) {
-              manageSale(sale);
-            } else {
-              manageArchivedSale(sale);
-            }
+            manageItem(sale);
           }
         }}
       >

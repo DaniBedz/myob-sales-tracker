@@ -2,8 +2,16 @@ import React, { useContext } from 'react';
 import { SalesListContext } from '../Contexts/SalesListContext';
 
 function ArchiveButton() {
-  const { toggleShowArchivedSales, toggleArchivedSales, sales, archivedSales } =
-    useContext(SalesListContext);
+  const {
+    toggleShowArchivedSales,
+    setToggleShowArchivedSales,
+    sales,
+    archivedSales,
+  } = useContext(SalesListContext);
+
+  function toggleArchivedSales() {
+    setToggleShowArchivedSales(!toggleShowArchivedSales);
+  }
 
   const buttonStyles = {
     color: `${toggleShowArchivedSales ? 'lime' : 'orange'}`,

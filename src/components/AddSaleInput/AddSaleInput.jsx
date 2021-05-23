@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { v4 as uuid } from 'uuid';
 import { SalesListContext } from '../Contexts/SalesListContext';
 
 const inputStyles = {
@@ -27,7 +28,8 @@ const plusButtonStyles = {
 
 function AddSaleInput({ visibility }) {
   const [newSaleText, setNewSaleText] = useState('');
-  const { addSale, toggleShowArchivedSales } = useContext(SalesListContext);
+  const { toggleShowArchivedSales, sales, setSales } =
+    useContext(SalesListContext);
 
   const divStyles = {
     margin: '1.5rem 1.5rem 1rem 1rem',
@@ -37,8 +39,30 @@ function AddSaleInput({ visibility }) {
     left: `${toggleShowArchivedSales ? '1.5rem' : ''}`,
   };
 
-  function handleChange(event) {
-    setNewSaleText(event.target.value);
+  function addSale(company) {
+    setSales([
+      ...sales,
+      {
+        saleId: uuid(),
+        company,
+        quoteId: '',
+        email: '',
+        clientId: '',
+        quoteExpiry: '',
+        saleDate: '',
+        potentialSales: 0,
+        notes: '',
+        utilisations: {
+          subs: 0,
+          bankFeed: 0,
+          PDO: 0,
+          cloudFile: 0,
+          OAQ: 0,
+          offlineFile: 0,
+          payroll: 0,
+        },
+      },
+    ]);
   }
 
   function handleSubmit() {
@@ -51,7 +75,7 @@ function AddSaleInput({ visibility }) {
     <div className="align-self-start" style={divStyles}>
       <input
         id="newCompanyNameInput"
-        onChange={handleChange}
+        onChange={(e) => setNewSaleText(e.target.value)}
         onKeyUp={(e) => {
           if (e.code === 'Enter') handleSubmit();
         }}

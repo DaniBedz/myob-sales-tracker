@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
-import { v4 as uuid } from 'uuid';
 import * as alertify from 'alertifyjs';
 import defaults from '../SaleList/alertifyDefaults';
 import 'alertifyjs/build/css/alertify.css';
@@ -19,190 +18,33 @@ export function SalesListContextProvider(props) {
 
   const [toggleShowArchivedSales, setToggleShowArchivedSales] = useState(false);
 
-  function addSale(company) {
-    const newSaleTemplate = {
-      saleId: uuid(),
-      company,
-      quoteId: '',
-      email: '',
-      clientId: '',
-      quoteExpiry: '',
-      saleDate: '',
-      notes: '',
-      potentialSales: 0,
-      utilisations: {
-        subs: 0,
-        bankFeed: 0,
-        cloudFile: 0,
-        PDO: 0,
-        OAQ: 0,
-        payroll: 0,
-        offlineFile: 0,
-      },
-    };
-    setSales([...sales, newSaleTemplate]);
-  }
-
-  const saveSalesToLocalStorage = useCallback(() => {
-    if (!window.localStorage.getItem('sales')) {
-      window.localStorage.setItem('sales', JSON.stringify([]));
+  const saveToLocalStorage = useCallback((object, text) => {
+    if (!window.localStorage.getItem(text)) {
+      window.localStorage.setItem(text, JSON.stringify([]));
     }
-    window.localStorage.setItem('sales', JSON.stringify(sales));
-  }, [sales]);
-
-  const saveArchivedSalesToLocalStorage = useCallback(() => {
-    if (!window.localStorage.getItem('archivedSales')) {
-      window.localStorage.setItem('archivedSales', JSON.stringify([]));
-    }
-    window.localStorage.setItem('archivedSales', JSON.stringify(archivedSales));
-  }, [archivedSales]);
-
-  function manageSale(saleToManage) {
-    const saleString = JSON.stringify(saleToManage);
-
-    function archiveSale() {
-      setArchivedSales([...archivedSales, JSON.parse(saleString)]);
-      saveArchivedSalesToLocalStorage();
-      alertify.success('Archived');
-
-      setSales(sales.filter((sale) => sale.saleId !== saleToManage.saleId));
-      document
-        .querySelector('.archiveBtn')
-        .removeEventListener('click', archiveSale);
-      document.querySelector('.ajs-close').click();
-    }
-
-    function addArchiveBtnEvent() {
-      const archiveBtn = document.querySelector('.archiveBtn');
-      archiveBtn.addEventListener('click', archiveSale);
-    }
-
-    setTimeout(addArchiveBtnEvent, 1);
-
-    alertify
-      .confirm(
-        'Delete Sale',
-        `Are you sure? <button id="archive_${saleToManage.saleId}" class="archiveBtn">Archive</button>`,
-        () => {
-          setSales((prevSales) =>
-            prevSales.filter((sale) => sale.saleId !== saleToManage.saleId)
-          );
-          document
-            .querySelector('.archiveBtn')
-            .removeEventListener('click', archiveSale);
-          alertify.success('Deleted');
-        },
-        () => {
-          document
-            .querySelector('.archiveBtn')
-            .removeEventListener('click', archiveSale);
-          alertify.error('Cancelled');
-        }
-      )
-      .set({
-        invokeOnCloseOff: false,
-        oncancel() {
-          document
-            .querySelector('.archiveBtn')
-            .removeEventListener('click', archiveSale);
-        },
-      });
-  }
-
-  function manageArchivedSale(archivedSale) {
-    const archivedSaleString = JSON.stringify(archivedSale);
-
-    function restoreArchivedSale() {
-      setSales([...sales, JSON.parse(archivedSaleString)]);
-      saveArchivedSalesToLocalStorage();
-      alertify.success('Restored from Archive');
-
-      setArchivedSales(
-        archivedSales.filter((sale) => sale.saleId !== archivedSale.saleId)
-      );
-      document
-        .querySelector('.archiveBtn')
-        .removeEventListener('click', restoreArchivedSale);
-      document.querySelector('.ajs-close').click();
-    }
-
-    function addRestoreFromArchiveBtnEvent() {
-      const archiveBtn = document.querySelector('.archiveBtn');
-      archiveBtn.addEventListener('click', restoreArchivedSale);
-    }
-
-    setTimeout(addRestoreFromArchiveBtnEvent, 1);
-
-    alertify
-      .confirm(
-        'Delete Sale',
-        `Are you sure? <button id="archive_${archivedSale.saleId}" class="archiveBtn archiveBtnRestore">Restore From Archive</button>`,
-        () => {
-          setArchivedSales((prevSales) =>
-            prevSales.filter((sale) => sale.saleId !== archivedSale.saleId)
-          );
-          document
-            .querySelector('.archiveBtn')
-            .removeEventListener('click', restoreArchivedSale);
-          alertify.success('Deleted');
-        },
-        () => {
-          document
-            .querySelector('.archiveBtn')
-            .removeEventListener('click', restoreArchivedSale);
-          alertify.error('Cancelled');
-        }
-      )
-      .set({
-        invokeOnCloseOff: false,
-        oncancel() {
-          document
-            .querySelector('.archiveBtn')
-            .removeEventListener('click', restoreArchivedSale);
-        },
-      });
-  }
-
-  function toggleArchivedSales() {
-    setToggleShowArchivedSales(!toggleShowArchivedSales);
-  }
-
-  function calculatePotentialSales(utilisations) {
-    return (
-      utilisations.subs +
-      utilisations.PDO +
-      (utilisations.bankFeed +
-        utilisations.cloudFile +
-        utilisations.OAQ +
-        utilisations.offlineFile) *
-        0.25 +
-      utilisations.payroll * 0.5
-    );
-  }
+    window.localStorage.setItem(text, JSON.stringify(object));
+  }, []);
 
   function handleChange(input, propName, sale) {
-    function reduce(prev) {
-      sale[propName] = input;
-      const previousMinusCurrent = prev.filter(
-        (item) => item.saleId !== sale.saleId
-      );
-      const newSalesObj = [...previousMinusCurrent, sale];
-      return newSalesObj.sort((a, b) => a.order - b.order);
-    }
+    const index = sales.indexOf(sale);
+    sale[propName] = input;
+
     if (!toggleShowArchivedSales) {
-      setSales((prev) => reduce(prev));
+      sales[index] = sale;
+      setSales([...sales]);
     } else {
-      setArchivedSales((prev) => reduce(prev));
+      archivedSales[index] = sale;
+      setArchivedSales([...archivedSales]);
     }
   }
 
   useEffect(() => {
-    saveSalesToLocalStorage();
-  }, [sales, saveSalesToLocalStorage]);
+    saveToLocalStorage(sales, 'sales');
+  }, [sales, saveToLocalStorage]);
 
   useEffect(() => {
-    saveArchivedSalesToLocalStorage();
-  }, [archivedSales, saveArchivedSalesToLocalStorage]);
+    saveToLocalStorage(archivedSales, 'archivedSales');
+  }, [archivedSales, saveToLocalStorage]);
 
   const { children } = props;
   return (
@@ -210,17 +52,12 @@ export function SalesListContextProvider(props) {
       value={{
         sales,
         setSales,
-        addSale,
-        saveSalesToLocalStorage,
-        manageSale,
         archivedSales,
         setArchivedSales,
         toggleShowArchivedSales,
         setToggleShowArchivedSales,
-        toggleArchivedSales,
-        manageArchivedSale,
+        alertify,
         handleChange,
-        calculatePotentialSales,
       }}
     >
       {children}

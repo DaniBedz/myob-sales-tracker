@@ -20,14 +20,8 @@ const colStyles = {
 };
 
 function NotesInput({ sale }) {
-  const { saveSalesToLocalStorage } = useContext(SalesListContext);
+  const { handleChange } = useContext(SalesListContext);
   const [notes, setNotes] = useState(sale.notes);
-
-  function handleChange(input) {
-    setNotes(input);
-    sale.notes = input;
-    saveSalesToLocalStorage();
-  }
 
   let isClicked = false;
 
@@ -47,6 +41,7 @@ function NotesInput({ sale }) {
     const util = document.querySelector(utilId);
     util.style.top = '-4.035rem';
   }
+
   function handleHoverOut() {
     const itemId = `#item_${sale.saleId}`;
     const item = document.querySelector(itemId);
@@ -82,7 +77,10 @@ function NotesInput({ sale }) {
         type="text"
         placeholder="Notes"
         onClick={isClickedTrue}
-        onChange={(event) => handleChange(event.target.value)}
+        onChange={(event) => {
+          setNotes(event.target.value);
+          handleChange(event.target.value, 'notes', sale);
+        }}
         value={notes}
         onMouseOver={handleHover}
         onFocus={handleHover}
