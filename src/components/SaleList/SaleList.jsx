@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, createRef } from 'react';
 import SortableList, { SortableItem } from 'react-easy-sort';
 import arrayMove from 'array-move';
 import Sale from '../Sale/Sale';
@@ -34,13 +34,13 @@ function SaleList() {
     cursor: 'grab',
   };
 
+  const ref = createRef();
+
   return (
-    <SortableList onSortEnd={onSortEnd} style={listStyles}>
+    <SortableList id="sales-list" onSortEnd={onSortEnd} style={listStyles}>
       {items.map((sale) => (
         <SortableItem key={sale.saleId}>
-          <div style={itemStyles}>
-            <Sale sale={sale} />
-          </div>
+          <Sale ref={ref} style={itemStyles} sale={sale} />
         </SortableItem>
       ))}
       {items.length === 0 ? <NoSalesToDisplay /> : null}

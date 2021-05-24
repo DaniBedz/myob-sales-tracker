@@ -92,6 +92,7 @@ function AddSaleInput({ visibility }) {
         onClick={handleSubmit}
         style={plusButtonStyles}
         type="submit"
+        aria-label="add new sale"
       >
         +
       </button>

@@ -121,6 +121,7 @@ function DeleteIcon({ sale }) {
         <svg
           style={iconStyles}
           aria-hidden="true"
+          aria-label="delete sale"
           focusable="false"
           data-prefix="fas"
           data-icon="trash-alt"

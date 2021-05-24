@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import UtilisationPanel from '../UtilisationPanel/UtilisationPanel';
 import FieldInput from '../FieldInput/FieldInput';
 import CalendarInput from '../CalendarInput/CalendarInput';
@@ -19,9 +19,14 @@ const divStyles = {
   height: '8rem',
 };
 
-function Sale({ sale }) {
+const Sale = forwardRef(({ sale }, ref) => {
   return (
-    <div id={`item_${sale.saleId}`} style={divStyles} className="row">
+    <article
+      id={`item_${sale.saleId}`}
+      style={divStyles}
+      className="row"
+      ref={ref}
+    >
       <TypeDropdown sale={sale} />
       <FieldInput sale={sale} propName="company" placeholder="Company" />
       <FieldInput sale={sale} propName="quoteId" placeholder="Quote ID" />
@@ -36,8 +41,8 @@ function Sale({ sale }) {
       <PotentialSales sale={sale} />
       <NotesInput sale={sale} />
       <UtilisationPanel sale={sale} />
-    </div>
+    </article>
   );
-}
+});
 
 export default Sale;
