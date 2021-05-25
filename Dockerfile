@@ -1,14 +1,24 @@
+# Use Node.js 14 Alpine
 FROM node:14-alpine
 
+# Mode package.json into a tmp directory
 ADD package.json /tmp/package.json
 
+# Remove the old build directory
+RUN rm -rf build
+
+# Install the dependancies
 RUN cd /tmp && npm install -q
 
 ADD ./ /src
+
+# Copy to dependancies to the src directory
 RUN rm -rf /src/node_modules && cp -a /tmp/node_modules /src/
 
 WORKDIR /src
 
-RUN npm run build
+# Build the appliction
+RUN npm run-script build
 
-CMD ["node", "build/js/index.js"]
+# Run the built application
+CMD ["node", "build/static/js/index.js"]
