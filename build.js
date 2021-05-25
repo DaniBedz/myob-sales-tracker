@@ -9,6 +9,7 @@ const generateBuild = async () => {
     outdir: './build/static/js',
     minify: true,
     bundle: true,
+    platform: 'node',
     sourcemap: true,
     loader: { '.svg': 'dataurl', '.png': 'dataurl', '.woff2': 'file' },
   }).catch(() => process.exit(1));
