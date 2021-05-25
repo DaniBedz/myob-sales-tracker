@@ -1,5 +1,5 @@
 danibedz.com {
-  reverse_proxy http://139.180.183.141:8080 {
+  reverse_proxy localhost:8080 {
     header_down Strict-Transport-Security max-age=31536000;
   }
 }
