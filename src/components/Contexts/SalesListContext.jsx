@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import * as alertify from 'alertifyjs';
-import defaults from '../SaleList/alertifyDefaults';
+// import options from '../SaleList/alertifyDefaults';
 import 'alertifyjs/build/css/alertify.css';
 import '../SaleList/alertifyCustom.css';
 
-alertify.defaults = defaults;
+// alertify.defaults = options;
 
 export const SalesListContext = createContext();
 

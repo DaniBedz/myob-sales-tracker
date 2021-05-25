@@ -4,7 +4,6 @@ import ColumnHeaders from '../ColumnHeaders/ColumnHeaders';
 import ArchiveButton from '../ArchiveButton/ArchiveButton';
 import ArchiveText from '../ArchiveIcon/ArchiveIcon';
 import { SalesListContext } from '../Contexts/SalesListContext';
-import '../../fonts/NeutroMYOB-Medium.woff2';
 
 const containerStyle = {
   borderTop: '2px solid gray',

@@ -2,12 +2,13 @@
   font-family: "NeutroMYOB-Medium";
   src: local("NeutroMYOB-Medium"),
     url("./fonts/NeutroMYOB-Medium.woff2") format("woff2");
-  font-weight: normal;
-}
+    font-weight: normal;
+  }
+
 
 html, body {
   width: 100%;
-  background-color: #343a40;
+  background-color: #343a40 !important;
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -88,7 +89,7 @@ svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #bt
 }
 
 textarea {
-  resize: none;
+  resize: none !important;
 }
 
 .show-archive-btn:hover {
