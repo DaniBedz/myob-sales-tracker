@@ -1,5 +1,5 @@
 danibedz.com {
-  reverse_proxy node-app:4000 {
+  reverse_proxy node-app:8080 {
     header_down Strict-Transport-Security max-age=31536000;
   }
 }
