@@ -1,6 +1,8 @@
+version: '3.7'
+
 services:
   node-app:
-    container_ name: node-app
+    container_name: node-app
     restart: unless-stopped
     environment:
       - NODE_ENV=production
