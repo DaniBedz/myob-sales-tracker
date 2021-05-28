@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fb5281b4.chunk.css",
+    "main.js": "/static/js/main.f5c6c070.chunk.js",
+    "main.js.map": "/static/js/main.f5c6c070.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4b384f93.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4b384f93.js.map",
+    "static/css/2.75c9b377.chunk.css": "/static/css/2.75c9b377.chunk.css",
+    "static/js/2.3fc0dd8a.chunk.js": "/static/js/2.3fc0dd8a.chunk.js",
+    "static/js/2.3fc0dd8a.chunk.js.map": "/static/js/2.3fc0dd8a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.75c9b377.chunk.css.map": "/static/css/2.75c9b377.chunk.css.map",
+    "static/css/main.fb5281b4.chunk.css.map": "/static/css/main.fb5281b4.chunk.css.map",
+    "static/js/2.3fc0dd8a.chunk.js.LICENSE.txt": "/static/js/2.3fc0dd8a.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/NeutroMYOB-Medium.3644336b.woff2",
+    "static/media/archive.f240005e.svg": "/static/media/archive.f240005e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4b384f93.js",
+    "static/css/2.75c9b377.chunk.css",
+    "static/js/2.3fc0dd8a.chunk.js",
+    "static/css/main.fb5281b4.chunk.css",
+    "static/js/main.f5c6c070.chunk.js"
+  ]
+}
