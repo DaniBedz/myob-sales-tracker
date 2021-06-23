@@ -26,7 +26,7 @@ function SaleList() {
   };
 
   const listStyles = {
-    margin: items.length ? '0rem 0.25rem' : '0',
+    margin: items.length ? '0rem 0.75rem' : '0',
     userSelect: 'none',
   };
 
