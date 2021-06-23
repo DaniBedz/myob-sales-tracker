@@ -27,6 +27,3 @@ yarn-error.log*
 # cypress media
 cypress/videos
 cypress/screenshots
-
-# build folder
-/dist

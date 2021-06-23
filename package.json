@@ -21,9 +21,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "npm-run-all --parallel build server",
+    "start": "npm-run-all --parallel dev-build server",
     "server": "npx servor ./build/ index.html --reload",
     "build": "node build.js",
+    "dev-build": "node dev-build.js",
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",

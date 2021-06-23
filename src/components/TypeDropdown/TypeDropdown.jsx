@@ -7,11 +7,11 @@ const buttonStyle = {
 };
 
 function dynamicTypeValue(sale) {
+  let typeValue;
   const numberOfUtilisations =
     Object.values(sale.utilisations).reduce((prev, curr) => prev + curr) -
     sale.utilisations.subs;
 
-  let typeValue;
   if (sale.potentialSales === 0 && sale.quoteId === '') {
     typeValue = 'None';
   }
