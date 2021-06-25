@@ -27,6 +27,3 @@ yarn-error.log*
 # cypress media
 cypress/videos
 cypress/screenshots
-
-# misc
-package-lock.json
