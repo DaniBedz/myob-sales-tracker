@@ -1,26 +1,21 @@
 import React from 'react';
+import { useRoutes, navigate } from 'raviger';
 
-import './bootstrap.min.css';
-import './App.css';
-import Header from './components/Header/Header';
-import SaleList from './components/SaleList/SaleList';
-import LoginForm from './components/LoginPage/LoginForm';
-import { SalesListContextProvider } from './components/Contexts/SalesListContext';
+import Dashboard from './components/Dashboard/Dashboard';
+import LoginPage from './components/LoginPage/LoginPage';
 
-const appStyles = {
-    backgroundColor: '#565656',
+const routes = {
+    '/': () => <Dashboard />,
+    '/login': () => <LoginPage />,
 };
 
-function App() {
-    return (
-        <div style={appStyles}>
-            <LoginForm />
-            <SalesListContextProvider>
-                <Header />
-                <SaleList />
-            </SalesListContextProvider>
-        </div>
-    );
-}
+export default function App() {
+    let route = useRoutes(routes);
+    // localStorage.getItem('credential') ? console.log('Credential') : navigate('/login');
 
-export default App;
+    return (
+        <>
+            {route}
+        </>
+    );
+};

@@ -14,6 +14,7 @@
         "esbuild-plugin-svg": "^0.1.0",
         "firebase": "^9.0.0-beta.6",
         "patch-package": "^6.4.7",
+        "raviger": "^2.4.1",
         "react": "^18.0.0-alpha-81346764b-20210714",
         "react-bootstrap": "^1.6.0",
         "react-dom": "^18.0.0-alpha-81346764b-20210714",

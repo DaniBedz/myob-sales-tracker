@@ -19,9 +19,13 @@ function openGoogleAuth() {
         .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
+            localStorage.setItem('credential', credential);
             const token = credential.accessToken;
+            localStorage.setItem('token', token);
             // The signed-in user info.
             const { user } = result;
+            localStorage.setItem('user', user);
+
         // ...
         })
         .catch((error) => {
@@ -36,12 +40,12 @@ function openGoogleAuth() {
         });
 }
 
-function LoginForm() {
+function LoginPage() {
     return (
         <div>
-            <a href="#" onClick={() => openGoogleAuth()}>Login Form</a>
+            <button onClick={() => openGoogleAuth()}>Login Form</button>
         </div>
     );
 }
 
-export default LoginForm;
+export default LoginPage;
