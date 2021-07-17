@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import './bootstrap.min.css';
+import '../App/App.css';
+import { navigate } from 'raviger';
 
-import '../../bootstrap.min.css';
-import '../../App.css';
 import Header from '../Header/Header';
 import SaleList from '../SaleList/SaleList';
 import { SalesListContextProvider } from '../Contexts/SalesListContext';
@@ -11,6 +12,10 @@ const appStyles = {
 };
 
 export default function Dashboard() {
+    useEffect(() => {
+        if (!localStorage.getItem('credential')) navigate('/login');
+    }, []);
+
     return (
         <div style={appStyles}>
             <SalesListContextProvider>
@@ -19,4 +24,4 @@ export default function Dashboard() {
             </SalesListContextProvider>
         </div>
     );
-};
+}

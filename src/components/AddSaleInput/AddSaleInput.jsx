@@ -29,8 +29,7 @@ const plusButtonStyles = {
 
 function AddSaleInput({ visibility }) {
     const [newSaleText, setNewSaleText] = useState('');
-    const { toggleShowArchivedSales, sales, setSales } =
-    useContext(SalesListContext);
+    const { toggleShowArchivedSales, sales, setSales } = useContext(SalesListContext);
 
     const divStyles = {
         margin: '1.5rem 1.5rem 1rem 1rem',
@@ -95,7 +94,7 @@ function AddSaleInput({ visibility }) {
                 type="submit"
                 aria-label="add new sale"
             >
-        +
+                +
             </button>
         </div>
     );

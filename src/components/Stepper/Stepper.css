@@ -1,55 +1,55 @@
 .input-number {
-  position: relative;
-  width: 100px;
-  height: 40px;
-  background-color: transparent;
-  overflow: hidden;
-  border-radius: 20px;
-  margin: 2px;
-  outline: 2px solid #343a40;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 2px;
+    outline: 2px solid #343a40;
 }
 
 .input-number span {
-  position: absolute;
-  left: 50%;
-  margin-left: -20px;
-  display: inline-block;
-  background-color: #484848;
-  height: 100%;
-  width: 40px;
-  border-radius: 20px;
-  text-align: center;
-  line-height: 40px;
-  font-size: 16px;
-  color: white;
-  letter-spacing: -1px;
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    display: inline-block;
+    background-color: #484848;
+    height: 100%;
+    width: 40px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: white;
+    letter-spacing: -1px;
 }
 
 .input-number button {
-  display: inline-block;
-  width: 50px;
-  height: 100%;
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #484848;
-  transition: background-color .2s ease;
+    display: inline-block;
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #484848;
+    transition: background-color .2s ease;
 }
 
 .input-number button:nth-of-type(1) {
-  padding-right: 20px
+    padding-right: 20px
 }
 
 .input-number button:nth-of-type(2) {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 .input-number button:hover {
-  background-color: rgba(255,255,255,.25);
+    background-color: rgba(255,255,255,.25);
 }
 
 .plusMinus:hover, .plusMinus:focus {
-  background: linear-gradient(90deg, #6c00ac, #ff0077);
+    background: linear-gradient(90deg, #6c00ac, #ff0077);
 }

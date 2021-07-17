@@ -1,0 +1,96 @@
+@font-face {
+    font-family: "NeutroMYOB-Medium";
+    src: local("NeutroMYOB-Medium"),
+    url("./fonts/NeutroMYOB-Medium.woff2") format("woff2");
+    font-weight: normal;
+}
+
+
+html, body {
+    width: 100%;
+    background-color: #343a40;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.row {
+    --bs-gutter-x: 0.5rem;
+}
+
+.dropdown-toggle {
+    width: 100%;
+    border: 2px solid #343a40;
+    border-radius: 7px;
+    padding-bottom: 0.19rem;
+    z-index: 1;
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    background-color: #565656;
+    width: 96%;
+    margin: 3px;
+    border: 2px solid #343a40;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #6000a4;
+    border: 2px solid #343a40;
+}
+
+.btn-primary:focus, .show > .btn-primary.dropdown-toggle, .btn-primary:hover, .btn-primary:focus-visible {
+    border: 2px solid #343a40;
+    background-color: #b50191;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: #484848;
+}
+
+svg:hover:not(#myob-logo), input[type="text"]:focus, .dropdown-toggle:focus, #btn-add-sale:focus, .deleteBtn:focus, .highlighted, .notes-input:focus, .dropdown-toggle.btn.btn-primary:focus, .show-archive-btn:focus {
+    outline: none !important;
+    box-shadow: 15px 10px 20px #df00a8, -15px 10px 20px #6000a4, -15px -10px 20px #df00a8, 15px -10px 20px #6000a4;
+}
+
+.dropdown-toggle.btn.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.notes-input:hover, .notes-input:focus {
+    text-align: left !important;
+    height: 6rem !important;
+    text-align: left !important;
+    padding: 0.5rem;
+}
+
+textarea {
+    resize: none !important;
+}
+
+.show-archive-btn:hover {
+    background-color: #343a40 !important;
+}

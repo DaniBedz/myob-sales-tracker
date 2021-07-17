@@ -1,12 +1,9 @@
-import React, { createContext, useState, useEffect, useCallback } from 'react';
-
+import React, {
+    createContext, useState, useEffect, useCallback,
+} from 'react';
 import * as alertify from 'alertifyjs';
-// import options from '../SaleList/alertifyDefaults';
 import 'alertifyjs/build/css/alertify.css';
 import '../SaleList/alertifyCustom.css';
-
-// alertify.defaults = options;
-
 
 export const SalesListContext = createContext();
 
@@ -29,13 +26,14 @@ export function SalesListContextProvider(props) {
 
     function handleChange(input, propName, sale) {
         const index = sales.indexOf(sale);
-        sale[propName] = input;
+        const changedSale = sale;
+        changedSale[propName] = input;
 
         if (!toggleShowArchivedSales) {
-            sales[index] = sale;
+            sales[index] = changedSale;
             setSales([...sales]);
         } else {
-            archivedSales[index] = sale;
+            archivedSales[index] = changedSale;
             setArchivedSales([...archivedSales]);
         }
     }
