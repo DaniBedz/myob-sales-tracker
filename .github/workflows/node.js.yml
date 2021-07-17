@@ -16,9 +16,11 @@ jobs:
         node-version: [14.x]
 
     steps:
+    - name: Change Folder
+      run: cd /var/myob
+
     - name: Checkout Repo
       uses: actions/checkout@v2
-      run: cd /var/myob
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
