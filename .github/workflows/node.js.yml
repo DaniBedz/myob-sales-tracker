@@ -16,7 +16,12 @@ jobs:
         node-version: [14.x]
 
     steps:
+    - name: Display the path
+    run: echo $PATH
+    shell: bash
+
     - uses: actions/checkout@v2
+      working-directory: /var/myob
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
