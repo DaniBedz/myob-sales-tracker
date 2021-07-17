@@ -16,9 +16,6 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - name: Change Folder
-      run: cd /var/myob
-
     - name: Checkout Repo
       uses: actions/checkout@v2
 
@@ -33,6 +30,7 @@ jobs:
         path: ~/.npm
         key: npm-${{ hashFiles('package-lock.json') }}
         restore-keys: npm-
+
     - name: Clean Install
       run: npm ci
 

@@ -1,5 +1,5 @@
 {
-    "name": "myob Sales Tracker",
+    "name": "myob-sales-tracker",
     "version": "0.0.0",
     "scripts": {
         "dev": "vite",
