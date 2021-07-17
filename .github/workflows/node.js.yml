@@ -1,4 +1,6 @@
 name: Node.js CI
+defaults:
+  working-directory: ~/var/myob
 
 on:
   push:
@@ -29,4 +31,3 @@ jobs:
         restore-keys: npm-
     - run: npm ci
     - run: npm run build --if-present
-      working-directory: ~/var/myob
