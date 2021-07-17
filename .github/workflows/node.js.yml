@@ -29,7 +29,4 @@ jobs:
         key: npm-${{ hashFiles('package-lock.json') }}
         restore-keys: npm-
     - run: npm ci
-      working-directory: /var/myob
-
     - run: npm run build --if-present
-      working-directory: /var/myob
