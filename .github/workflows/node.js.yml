@@ -39,7 +39,9 @@ jobs:
 
     - name: Copy to serving folder
       run: |
-        cd dist
+        cd ..
+        rm -rf assets index.html
+        cd repo/dist
         mv assets index.html ../..
         cd ..
         rm -rf dist
